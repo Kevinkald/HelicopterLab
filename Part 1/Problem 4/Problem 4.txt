@@ -1,0 +1,10 @@
+
+
+
+-----------------
+
+Vs* = 6,5
+
+For å finne k_f løste vi ligning 2b, e = 0 gir:
+
+kf = 0.153667  = 0.154

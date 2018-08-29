@@ -1,0 +1,4 @@
+Compare the physical behavrious of the helicopter with the theoretical models.
+------------
+
+vanskelig å styre med joysticken, travel endret seg ved utslag av pitch.
