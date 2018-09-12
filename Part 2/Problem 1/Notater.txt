@@ -1,0 +1,12 @@
+Vi har prøvd med ulike referanser og tunet regulator ift ekstrem referanse på pitch med 30 grader.
+Resultatet har vært lovende men med stort stasjonæravvik. Ulike omega ble prøvd, hvor pi var mest aggresiv og pi/4 var veldig treig.
+
+Mer naturlig referanse på pitch er 10 grader og ga godt resultat med 3pi/4 som omega. Her var det svært lite stasjonæravvik.
+
+Stasjonæravviket kan skyldes at når helikopteret får en stor travelhastighet vil luftmostand gjøre at den rotoren som står 
+
+
+VIDERE:
+
+Plot grafer i matlab med genererte dataset fra filer: omega_pi, .......-> omega_tre_pi..._med_ref_10...
+Fiks latex

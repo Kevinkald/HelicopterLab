@@ -13,7 +13,7 @@
 
 %%%%%%%%%%% Calibration of the encoder and the hardware for the specific
 %%%%%%%%%%% helicopter
-Joystick_gain_x = 1;
+Joystick_gain_x = 0.8;
 Joystick_gain_y = -1;
 
 
@@ -50,5 +50,6 @@ eig(pitchControler)
 
 %%%%%%%%%%%%%%Problem 2
 
-k_rp = 1;
+k_rp = -1;
+offset_travel = -0.081;
 
