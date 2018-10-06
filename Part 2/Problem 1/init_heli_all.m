@@ -34,6 +34,10 @@ j_lambda = m_c*(l_c)^2 + 2*m_p*((l_h)^2 + (l_p)^2);
 k1 = (l_p*k_f)/(j_p);
 k2 = ((k_f*l_h)/(j_e));
 k3 = (-k_f*l_h*g*(m_c*l_c - 2*m_p*l_h))/(j_lambda*k_f*l_h);
+L1 = l_h*k_f;
+L2 = k2*j_e;
+L3 = l_h*k_f;
+L4 = k_f*l_h*l_p;
 
 %%%%%%%%%% Transer functions
 s = tf('s');

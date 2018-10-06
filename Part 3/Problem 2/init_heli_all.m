@@ -34,21 +34,56 @@ j_lambda = m_c*(l_c)^2 + 2*m_p*((l_h)^2 + (l_p)^2);
 k1 = (l_p*k_f)/(j_p);
 k2 = ((k_f*l_h)/(j_e));
 k3 = (-k_f*l_h*g*(m_c*l_c - 2*m_p*l_h))/(j_lambda*k_f*l_h);
+L1 = l_h*k_f;
+L2 = k2*j_e;
+L3 = l_h*k_f;
+L4 = k_f*l_h*l_p;
 
 %%%%%%%%%% Transer functions
 s = tf('s');
 omega0 = 3*pi/4;
-zeta = 1;
+zeta = 1.0;
 k_pp = (omega0^2)/k1;
 k_pd = (2*zeta * omega0)/k1;
 %k_pp =10;
 %k_pd = 2*k_pp/(sqrt(k1*k_pp));
 pitchControler = (k1*k_pp)/(s^2+k1*k_pd*s+k1*k_pp);
 
-%margin(1/(1+pitchControler));
-eig(pitchControler)
-
 %%%%%%%%%%%%%%Problem 2
 
 k_rp = -1;
 offset_travel = -0.081;
+
+
+%%%%%%%%%%%%%%%Task 3
+
+%%%%%%%%%%%%%%% Problem 1
+
+A = [0, 1, 0; 
+     0, 0, 0; 
+     0, 0, 0];
+
+B = [0, 0;
+     0, k1; 
+     k2, 0];
+ 
+C = [1,0,0;
+     0,0,1];%?
+ 
+R = [10, 0;%vs
+     0, 10];%vd
+
+
+Q = [10, 0, 0;%p
+     0, 3, 0;%pdot
+     0, 0, 1000];%edot
+ 
+ 
+
+K= lqr(A, B, Q, R);
+D = 0;
+P = inv(C*inv(B*K-A)*B);
+
+
+eig(A-B*K)
+
