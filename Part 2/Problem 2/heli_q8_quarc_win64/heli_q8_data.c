@@ -5,7 +5,7 @@
  *
  * Model version              : 1.65
  * Simulink Coder version : 8.6 (R2014a) 27-Dec-2013
- * C source code generated on : Wed Sep 12 14:14:28 2018
+ * C source code generated on : Sun Oct 07 10:50:47 2018
  *
  * Target selection: quarc_win64.tlc
  * Note: GRT includes extra infrastructure and instrumentation for prototyping
@@ -345,16 +345,7 @@ P_heli_q8_T heli_q8_P = {
                                         * Referenced by: '<S7>/Integrator'
                                         */
   0.0,                                 /* Expression: 0
-                                        * Referenced by: '<S4>/Rate Transition: y'
-                                        */
-  -0.1,                                /* Expression: -0.1
-                                        * Referenced by: '<S4>/Dead Zone: y'
-                                        */
-  0.1,                                 /* Expression: 0.1
-                                        * Referenced by: '<S4>/Dead Zone: y'
-                                        */
-  1.1111111111111112,                  /* Expression: 10/9
-                                        * Referenced by: '<S4>/Gain: y'
+                                        * Referenced by: '<Root>/e_+'
                                         */
   0.0,                                 /* Expression: 0
                                         * Referenced by: '<Root>/e_~_c'
@@ -385,6 +376,18 @@ P_heli_q8_T heli_q8_P = {
                                         */
   -5.0,                                /* Expression: -5
                                         * Referenced by: '<S3>/Back motor: Saturation'
+                                        */
+  0.0,                                 /* Expression: 0
+                                        * Referenced by: '<S4>/Rate Transition: y'
+                                        */
+  -0.1,                                /* Expression: -0.1
+                                        * Referenced by: '<S4>/Dead Zone: y'
+                                        */
+  0.1,                                 /* Expression: 0.1
+                                        * Referenced by: '<S4>/Dead Zone: y'
+                                        */
+  1.1111111111111112,                  /* Expression: 10/9
+                                        * Referenced by: '<S4>/Gain: y'
                                         */
   12U,                                 /* Computed Parameter: GameController_BufferSize
                                         * Referenced by: '<S4>/Game Controller'

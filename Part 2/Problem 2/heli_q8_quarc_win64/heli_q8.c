@@ -5,7 +5,7 @@
  *
  * Model version              : 1.65
  * Simulink Coder version : 8.6 (R2014a) 27-Dec-2013
- * C source code generated on : Wed Sep 12 14:14:28 2018
+ * C source code generated on : Sun Oct 07 10:50:47 2018
  *
  * Target selection: quarc_win64.tlc
  * Note: GRT includes extra infrastructure and instrumentation for prototyping
@@ -355,40 +355,18 @@ void heli_q8_output0(void)             /* Sample time: [0.0s, 0.0s] */
   }
 
   rtb_Backgain = heli_q8_X.Integrator_CSTATE;
-
-  /* RateTransition: '<S4>/Rate Transition: y' incorporates:
-   *  Constant: '<Root>/e_~_c'
-   */
   if (rtmIsMajorTimeStep(heli_q8_M)) {
-    if (heli_q8_M->Timing.RateInteraction.TID1_2) {
-      heli_q8_B.RateTransitiony = heli_q8_DW.RateTransitiony_Buffer0;
-    }
+    /* Constant: '<Root>/e_+' */
+    heli_q8_B.e_ = heli_q8_P.e__Value;
 
-    /* DeadZone: '<S4>/Dead Zone: y' */
-    if (heli_q8_B.RateTransitiony > heli_q8_P.DeadZoney_End) {
-      rtb_DeadZoney = heli_q8_B.RateTransitiony - heli_q8_P.DeadZoney_End;
-    } else if (heli_q8_B.RateTransitiony >= heli_q8_P.DeadZoney_Start) {
-      rtb_DeadZoney = 0.0;
-    } else {
-      rtb_DeadZoney = heli_q8_B.RateTransitiony - heli_q8_P.DeadZoney_Start;
-    }
-
-    /* End of DeadZone: '<S4>/Dead Zone: y' */
-
-    /* Gain: '<S4>/Joystick_gain_y' incorporates:
-     *  Gain: '<S4>/Gain: y'
-     */
-    heli_q8_B.Joystick_gain_y = heli_q8_P.Gainy_Gain * rtb_DeadZoney *
-      heli_q8_P.Joystick_gain_y;
+    /* Constant: '<Root>/e_~_c' */
     heli_q8_B.e__c = heli_q8_P.e__c_Value;
   }
-
-  /* End of RateTransition: '<S4>/Rate Transition: y' */
 
   /* Sum: '<S2>/Sum' incorporates:
    *  Sum: '<Root>/Sum'
    */
-  rtb_Sum_p = heli_q8_B.e__c - (rtb_degtorad3_idx_4 - heli_q8_B.Joystick_gain_y);
+  rtb_Sum_p = heli_q8_B.e__c - (rtb_degtorad3_idx_4 - heli_q8_B.e_);
 
   /* Sum: '<S7>/Sum' incorporates:
    *  Gain: '<S7>/K_ed'
@@ -451,6 +429,30 @@ void heli_q8_output0(void)             /* Sample time: [0.0s, 0.0s] */
         rtmSetErrorStatus(heli_q8_M, _rt_error_message);
       }
     }
+
+    /* RateTransition: '<S4>/Rate Transition: y' */
+    if (heli_q8_M->Timing.RateInteraction.TID1_2) {
+      heli_q8_B.RateTransitiony = heli_q8_DW.RateTransitiony_Buffer0;
+    }
+
+    /* End of RateTransition: '<S4>/Rate Transition: y' */
+
+    /* DeadZone: '<S4>/Dead Zone: y' */
+    if (heli_q8_B.RateTransitiony > heli_q8_P.DeadZoney_End) {
+      rtb_DeadZoney = heli_q8_B.RateTransitiony - heli_q8_P.DeadZoney_End;
+    } else if (heli_q8_B.RateTransitiony >= heli_q8_P.DeadZoney_Start) {
+      rtb_DeadZoney = 0.0;
+    } else {
+      rtb_DeadZoney = heli_q8_B.RateTransitiony - heli_q8_P.DeadZoney_Start;
+    }
+
+    /* End of DeadZone: '<S4>/Dead Zone: y' */
+
+    /* Gain: '<S4>/Joystick_gain_y' incorporates:
+     *  Gain: '<S4>/Gain: y'
+     */
+    heli_q8_B.Joystick_gain_y = heli_q8_P.Gainy_Gain * rtb_DeadZoney *
+      heli_q8_P.Joystick_gain_y;
   }
 }
 
@@ -1341,10 +1343,10 @@ RT_MODEL_heli_q8_T *heli_q8(void)
   heli_q8_M->Timing.stepSize2 = 0.01;
 
   /* External mode info */
-  heli_q8_M->Sizes.checksums[0] = (225228815U);
-  heli_q8_M->Sizes.checksums[1] = (819030245U);
-  heli_q8_M->Sizes.checksums[2] = (3426897087U);
-  heli_q8_M->Sizes.checksums[3] = (1233800365U);
+  heli_q8_M->Sizes.checksums[0] = (2215238336U);
+  heli_q8_M->Sizes.checksums[1] = (610199220U);
+  heli_q8_M->Sizes.checksums[2] = (3868593295U);
+  heli_q8_M->Sizes.checksums[3] = (3653222021U);
 
   {
     static const sysRanDType rtAlwaysEnabled = SUBSYS_RAN_BC_ENABLE;
@@ -1382,12 +1384,13 @@ RT_MODEL_heli_q8_T *heli_q8(void)
     heli_q8_B.Joystick_gain_x = 0.0;
     heli_q8_B.Sum2_f = 0.0;
     heli_q8_B.p_1 = 0.0;
-    heli_q8_B.RateTransitiony = 0.0;
-    heli_q8_B.Joystick_gain_y = 0.0;
+    heli_q8_B.e_ = 0.0;
     heli_q8_B.e__c = 0.0;
     heli_q8_B.K_ei = 0.0;
     heli_q8_B.FrontmotorSaturation = 0.0;
     heli_q8_B.BackmotorSaturation = 0.0;
+    heli_q8_B.RateTransitiony = 0.0;
+    heli_q8_B.Joystick_gain_y = 0.0;
     heli_q8_B.GameController_o4 = 0.0;
     heli_q8_B.GameController_o5 = 0.0;
   }
@@ -1465,9 +1468,9 @@ RT_MODEL_heli_q8_T *heli_q8(void)
   }
 
   heli_q8_DW.RateTransitionx_Buffer0 = 0.0;
-  heli_q8_DW.RateTransitiony_Buffer0 = 0.0;
   heli_q8_DW.HILWriteAnalog_Buffer[0] = 0.0;
   heli_q8_DW.HILWriteAnalog_Buffer[1] = 0.0;
+  heli_q8_DW.RateTransitiony_Buffer0 = 0.0;
 
   /* data type transition information */
   {
@@ -1492,9 +1495,9 @@ RT_MODEL_heli_q8_T *heli_q8(void)
   heli_q8_M->Sizes.numU = (0);         /* Number of model inputs */
   heli_q8_M->Sizes.sysDirFeedThru = (0);/* The model is not direct feedthrough */
   heli_q8_M->Sizes.numSampTimes = (3); /* Number of sample times */
-  heli_q8_M->Sizes.numBlocks = (66);   /* Number of blocks */
-  heli_q8_M->Sizes.numBlockIO = (22);  /* Number of block outputs */
-  heli_q8_M->Sizes.numBlockPrms = (157);/* Sum of parameter "widths" */
+  heli_q8_M->Sizes.numBlocks = (67);   /* Number of blocks */
+  heli_q8_M->Sizes.numBlockIO = (23);  /* Number of block outputs */
+  heli_q8_M->Sizes.numBlockPrms = (158);/* Sum of parameter "widths" */
   return heli_q8_M;
 }
 

@@ -352,8 +352,8 @@
       paramMap.sections(4) = section;
       clear section
       
-      section.nData     = 44;
-      section.data(44)  = dumData; %prealloc
+      section.nData     = 45;
+      section.data(45)  = dumData; %prealloc
       
 	  ;% heli_q8_P.PitchCounttorad_Gain
 	  section.data(1).logicalSrcIdx = 74;
@@ -475,61 +475,65 @@
 	  section.data(30).logicalSrcIdx = 103;
 	  section.data(30).dtTransOffset = 29;
 	
-	  ;% heli_q8_P.RateTransitiony_X0
+	  ;% heli_q8_P.e__Value
 	  section.data(31).logicalSrcIdx = 104;
 	  section.data(31).dtTransOffset = 30;
 	
-	  ;% heli_q8_P.DeadZoney_Start
+	  ;% heli_q8_P.e__c_Value
 	  section.data(32).logicalSrcIdx = 105;
 	  section.data(32).dtTransOffset = 31;
 	
-	  ;% heli_q8_P.DeadZoney_End
+	  ;% heli_q8_P.K_ep_Gain
 	  section.data(33).logicalSrcIdx = 106;
 	  section.data(33).dtTransOffset = 32;
 	
-	  ;% heli_q8_P.Gainy_Gain
+	  ;% heli_q8_P.K_ed_Gain
 	  section.data(34).logicalSrcIdx = 107;
 	  section.data(34).dtTransOffset = 33;
 	
-	  ;% heli_q8_P.e__c_Value
+	  ;% heli_q8_P.Backgain_Gain
 	  section.data(35).logicalSrcIdx = 108;
 	  section.data(35).dtTransOffset = 34;
 	
-	  ;% heli_q8_P.K_ep_Gain
+	  ;% heli_q8_P.Frontgain_Gain
 	  section.data(36).logicalSrcIdx = 109;
 	  section.data(36).dtTransOffset = 35;
 	
-	  ;% heli_q8_P.K_ed_Gain
+	  ;% heli_q8_P.K_ei_Gain
 	  section.data(37).logicalSrcIdx = 110;
 	  section.data(37).dtTransOffset = 36;
 	
-	  ;% heli_q8_P.Backgain_Gain
+	  ;% heli_q8_P.FrontmotorSaturation_UpperSat
 	  section.data(38).logicalSrcIdx = 111;
 	  section.data(38).dtTransOffset = 37;
 	
-	  ;% heli_q8_P.Frontgain_Gain
+	  ;% heli_q8_P.FrontmotorSaturation_LowerSat
 	  section.data(39).logicalSrcIdx = 112;
 	  section.data(39).dtTransOffset = 38;
 	
-	  ;% heli_q8_P.K_ei_Gain
+	  ;% heli_q8_P.BackmotorSaturation_UpperSat
 	  section.data(40).logicalSrcIdx = 113;
 	  section.data(40).dtTransOffset = 39;
 	
-	  ;% heli_q8_P.FrontmotorSaturation_UpperSat
+	  ;% heli_q8_P.BackmotorSaturation_LowerSat
 	  section.data(41).logicalSrcIdx = 114;
 	  section.data(41).dtTransOffset = 40;
 	
-	  ;% heli_q8_P.FrontmotorSaturation_LowerSat
+	  ;% heli_q8_P.RateTransitiony_X0
 	  section.data(42).logicalSrcIdx = 115;
 	  section.data(42).dtTransOffset = 41;
 	
-	  ;% heli_q8_P.BackmotorSaturation_UpperSat
+	  ;% heli_q8_P.DeadZoney_Start
 	  section.data(43).logicalSrcIdx = 116;
 	  section.data(43).dtTransOffset = 42;
 	
-	  ;% heli_q8_P.BackmotorSaturation_LowerSat
+	  ;% heli_q8_P.DeadZoney_End
 	  section.data(44).logicalSrcIdx = 117;
 	  section.data(44).dtTransOffset = 43;
+	
+	  ;% heli_q8_P.Gainy_Gain
+	  section.data(45).logicalSrcIdx = 118;
+	  section.data(45).dtTransOffset = 44;
 	
       nTotData = nTotData + section.nData;
       paramMap.sections(5) = section;
@@ -539,7 +543,7 @@
       section.data(1)  = dumData; %prealloc
       
 	  ;% heli_q8_P.GameController_BufferSize
-	  section.data(1).logicalSrcIdx = 118;
+	  section.data(1).logicalSrcIdx = 119;
 	  section.data(1).dtTransOffset = 0;
 	
       nTotData = nTotData + section.nData;
@@ -550,7 +554,7 @@
       section.data(1)  = dumData; %prealloc
       
 	  ;% heli_q8_P.GameController_ControllerNumber
-	  section.data(1).logicalSrcIdx = 119;
+	  section.data(1).logicalSrcIdx = 120;
 	  section.data(1).dtTransOffset = 0;
 	
       nTotData = nTotData + section.nData;
@@ -561,19 +565,19 @@
       section.data(4)  = dumData; %prealloc
       
 	  ;% heli_q8_P.HILReadEncoderTimebase_Active
-	  section.data(1).logicalSrcIdx = 120;
+	  section.data(1).logicalSrcIdx = 121;
 	  section.data(1).dtTransOffset = 0;
 	
 	  ;% heli_q8_P.HILWriteAnalog_Active
-	  section.data(2).logicalSrcIdx = 121;
+	  section.data(2).logicalSrcIdx = 122;
 	  section.data(2).dtTransOffset = 1;
 	
 	  ;% heli_q8_P.GameController_AutoCenter
-	  section.data(3).logicalSrcIdx = 122;
+	  section.data(3).logicalSrcIdx = 123;
 	  section.data(3).dtTransOffset = 2;
 	
 	  ;% heli_q8_P.GameController_Enabled
-	  section.data(4).logicalSrcIdx = 123;
+	  section.data(4).logicalSrcIdx = 124;
 	  section.data(4).dtTransOffset = 3;
 	
       nTotData = nTotData + section.nData;
@@ -621,8 +625,8 @@
     ;%
     ;% Auto data (heli_q8_B)
     ;%
-      section.nData     = 22;
-      section.data(22)  = dumData; %prealloc
+      section.nData     = 23;
+      section.data(23)  = dumData; %prealloc
       
 	  ;% heli_q8_B.PitchCounttorad
 	  section.data(1).logicalSrcIdx = 0;
@@ -680,37 +684,41 @@
 	  section.data(14).logicalSrcIdx = 13;
 	  section.data(14).dtTransOffset = 13;
 	
-	  ;% heli_q8_B.RateTransitiony
+	  ;% heli_q8_B.e_
 	  section.data(15).logicalSrcIdx = 14;
 	  section.data(15).dtTransOffset = 14;
 	
-	  ;% heli_q8_B.Joystick_gain_y
+	  ;% heli_q8_B.e__c
 	  section.data(16).logicalSrcIdx = 15;
 	  section.data(16).dtTransOffset = 15;
 	
-	  ;% heli_q8_B.e__c
+	  ;% heli_q8_B.K_ei
 	  section.data(17).logicalSrcIdx = 16;
 	  section.data(17).dtTransOffset = 16;
 	
-	  ;% heli_q8_B.K_ei
+	  ;% heli_q8_B.FrontmotorSaturation
 	  section.data(18).logicalSrcIdx = 17;
 	  section.data(18).dtTransOffset = 17;
 	
-	  ;% heli_q8_B.FrontmotorSaturation
+	  ;% heli_q8_B.BackmotorSaturation
 	  section.data(19).logicalSrcIdx = 18;
 	  section.data(19).dtTransOffset = 18;
 	
-	  ;% heli_q8_B.BackmotorSaturation
+	  ;% heli_q8_B.RateTransitiony
 	  section.data(20).logicalSrcIdx = 19;
 	  section.data(20).dtTransOffset = 19;
 	
-	  ;% heli_q8_B.GameController_o4
+	  ;% heli_q8_B.Joystick_gain_y
 	  section.data(21).logicalSrcIdx = 20;
 	  section.data(21).dtTransOffset = 20;
 	
-	  ;% heli_q8_B.GameController_o5
+	  ;% heli_q8_B.GameController_o4
 	  section.data(22).logicalSrcIdx = 21;
 	  section.data(22).dtTransOffset = 21;
+	
+	  ;% heli_q8_B.GameController_o5
+	  section.data(23).logicalSrcIdx = 22;
+	  section.data(23).dtTransOffset = 22;
 	
       nTotData = nTotData + section.nData;
       sigMap.sections(1) = section;
@@ -796,13 +804,13 @@
 	  section.data(9).logicalSrcIdx = 8;
 	  section.data(9).dtTransOffset = 64;
 	
-	  ;% heli_q8_DW.RateTransitiony_Buffer0
+	  ;% heli_q8_DW.HILWriteAnalog_Buffer
 	  section.data(10).logicalSrcIdx = 9;
 	  section.data(10).dtTransOffset = 65;
 	
-	  ;% heli_q8_DW.HILWriteAnalog_Buffer
+	  ;% heli_q8_DW.RateTransitiony_Buffer0
 	  section.data(11).logicalSrcIdx = 10;
-	  section.data(11).dtTransOffset = 66;
+	  section.data(11).dtTransOffset = 67;
 	
       nTotData = nTotData + section.nData;
       dworkMap.sections(1) = section;
@@ -975,8 +983,8 @@
   ;%
 
 
-  targMap.checksum0 = 225228815;
-  targMap.checksum1 = 819030245;
-  targMap.checksum2 = 3426897087;
-  targMap.checksum3 = 1233800365;
+  targMap.checksum0 = 2215238336;
+  targMap.checksum1 = 610199220;
+  targMap.checksum2 = 3868593295;
+  targMap.checksum3 = 3653222021;
 

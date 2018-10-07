@@ -5,7 +5,7 @@
  *
  * Model version              : 1.65
  * Simulink Coder version : 8.6 (R2014a) 27-Dec-2013
- * C source code generated on : Wed Sep 12 14:14:28 2018
+ * C source code generated on : Sun Oct 07 10:50:47 2018
  *
  * Target selection: quarc_win64.tlc
  * Note: GRT includes extra infrastructure and instrumentation for prototyping
@@ -60,7 +60,7 @@ static const char_T * rtDataTypeNames[] = {
 
 /* data type transitions for block I/O structure */
 static DataTypeTransition rtBTransitions[] = {
-  { (char_T *)(&heli_q8_B.PitchCounttorad), 0, 0, 22 }
+  { (char_T *)(&heli_q8_B.PitchCounttorad), 0, 0, 23 }
   ,
 
   { (char_T *)(&heli_q8_DW.HILInitialize_AIMinimums[0]), 0, 0, 68 },
@@ -96,7 +96,7 @@ static DataTypeTransition rtPTransitions[] = {
 
   { (char_T *)(&heli_q8_P.HILInitialize_active), 8, 0, 35 },
 
-  { (char_T *)(&heli_q8_P.PitchCounttorad_Gain), 0, 0, 44 },
+  { (char_T *)(&heli_q8_P.PitchCounttorad_Gain), 0, 0, 45 },
 
   { (char_T *)(&heli_q8_P.GameController_BufferSize), 5, 0, 1 },
 

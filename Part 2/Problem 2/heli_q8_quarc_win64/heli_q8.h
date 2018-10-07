@@ -5,7 +5,7 @@
  *
  * Model version              : 1.65
  * Simulink Coder version : 8.6 (R2014a) 27-Dec-2013
- * C source code generated on : Wed Sep 12 14:14:28 2018
+ * C source code generated on : Sun Oct 07 10:50:47 2018
  *
  * Target selection: quarc_win64.tlc
  * Note: GRT includes extra infrastructure and instrumentation for prototyping
@@ -811,12 +811,13 @@ typedef struct {
   real_T Joystick_gain_x;              /* '<S4>/Joystick_gain_x' */
   real_T Sum2_f;                       /* '<Root>/Sum2' */
   real_T p_1;                          /* '<Root>/p_*1' */
-  real_T RateTransitiony;              /* '<S4>/Rate Transition: y' */
-  real_T Joystick_gain_y;              /* '<S4>/Joystick_gain_y' */
+  real_T e_;                           /* '<Root>/e_+' */
   real_T e__c;                         /* '<Root>/e_~_c' */
   real_T K_ei;                         /* '<S7>/K_ei' */
   real_T FrontmotorSaturation;         /* '<S3>/Front motor: Saturation' */
   real_T BackmotorSaturation;          /* '<S3>/Back motor: Saturation' */
+  real_T RateTransitiony;              /* '<S4>/Rate Transition: y' */
+  real_T Joystick_gain_y;              /* '<S4>/Joystick_gain_y' */
   real_T GameController_o4;            /* '<S4>/Game Controller' */
   real_T GameController_o5;            /* '<S4>/Game Controller' */
 } B_heli_q8_T;
@@ -832,8 +833,8 @@ typedef struct {
   real_T HILInitialize_POSortedFreqs[8];/* '<Root>/HIL Initialize' */
   real_T HILInitialize_POValues[8];    /* '<Root>/HIL Initialize' */
   real_T RateTransitionx_Buffer0;      /* '<S4>/Rate Transition: x' */
-  real_T RateTransitiony_Buffer0;      /* '<S4>/Rate Transition: y' */
   real_T HILWriteAnalog_Buffer[2];     /* '<S3>/HIL Write Analog' */
+  real_T RateTransitiony_Buffer0;      /* '<S4>/Rate Transition: y' */
   t_game_controller GameController_Controller;/* '<S4>/Game Controller' */
   t_card HILInitialize_Card;           /* '<Root>/HIL Initialize' */
   t_task HILReadEncoderTimebase_Task;  /* '<S3>/HIL Read Encoder Timebase' */
@@ -1254,17 +1255,8 @@ struct P_heli_q8_T_ {
   real_T Integrator_LowerSat;          /* Expression: -inf
                                         * Referenced by: '<S7>/Integrator'
                                         */
-  real_T RateTransitiony_X0;           /* Expression: 0
-                                        * Referenced by: '<S4>/Rate Transition: y'
-                                        */
-  real_T DeadZoney_Start;              /* Expression: -0.1
-                                        * Referenced by: '<S4>/Dead Zone: y'
-                                        */
-  real_T DeadZoney_End;                /* Expression: 0.1
-                                        * Referenced by: '<S4>/Dead Zone: y'
-                                        */
-  real_T Gainy_Gain;                   /* Expression: 10/9
-                                        * Referenced by: '<S4>/Gain: y'
+  real_T e__Value;                     /* Expression: 0
+                                        * Referenced by: '<Root>/e_+'
                                         */
   real_T e__c_Value;                   /* Expression: 0
                                         * Referenced by: '<Root>/e_~_c'
@@ -1295,6 +1287,18 @@ struct P_heli_q8_T_ {
                                         */
   real_T BackmotorSaturation_LowerSat; /* Expression: -5
                                         * Referenced by: '<S3>/Back motor: Saturation'
+                                        */
+  real_T RateTransitiony_X0;           /* Expression: 0
+                                        * Referenced by: '<S4>/Rate Transition: y'
+                                        */
+  real_T DeadZoney_Start;              /* Expression: -0.1
+                                        * Referenced by: '<S4>/Dead Zone: y'
+                                        */
+  real_T DeadZoney_End;                /* Expression: 0.1
+                                        * Referenced by: '<S4>/Dead Zone: y'
+                                        */
+  real_T Gainy_Gain;                   /* Expression: 10/9
+                                        * Referenced by: '<S4>/Gain: y'
                                         */
   uint16_T GameController_BufferSize;  /* Computed Parameter: GameController_BufferSize
                                         * Referenced by: '<S4>/Game Controller'
