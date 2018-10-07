@@ -38,7 +38,7 @@ k3 = (-k_f*l_h*g*(m_c*l_c - 2*m_p*l_h))/(j_lambda*k_f*l_h);
 %%%%%%%%%% Transer functions
 s = tf('s');
 omega0 = 3*pi/4;
-zeta = 1;
+zeta = 1.0;
 k_pp = (omega0^2)/k1;
 k_pd = (2*zeta * omega0)/k1;
 %k_pp =10;
@@ -52,3 +52,4 @@ eig(pitchControler)
 
 k_rp = -1;
 offset_travel = -0.081;
+

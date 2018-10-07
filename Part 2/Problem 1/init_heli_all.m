@@ -34,17 +34,13 @@ j_lambda = m_c*(l_c)^2 + 2*m_p*((l_h)^2 + (l_p)^2);
 k1 = (l_p*k_f)/(j_p);
 k2 = ((k_f*l_h)/(j_e));
 k3 = (-k_f*l_h*g*(m_c*l_c - 2*m_p*l_h))/(j_lambda*k_f*l_h);
-L1 = l_h*k_f;
-L2 = k2*j_e;
-L3 = l_h*k_f;
-L4 = k_f*l_h*l_p;
 
 %%%%%%%%%% Transer functions
 s = tf('s');
-omega0 = pi
+omega0 = 3*pi/4;
 zeta = 1.0;
-k_pp = (omega0^2)/k1
-k_pd = (2*zeta * omega0)/k1
+k_pp = (omega0^2)/k1;
+k_pd = (2*zeta * omega0)/k1;
 %k_pp =10;
 %k_pd = 2*k_pp/(sqrt(k1*k_pp));
 pitchControler = (k1*k_pp)/(s^2+k1*k_pd*s+k1*k_pp);
