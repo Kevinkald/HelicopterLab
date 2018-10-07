@@ -28,12 +28,11 @@ data4 = array4(4,:);
 
 plot(time1, data1, 'r');
 title('Step response of pitch with different values of \omega');
-xlabel('Time t [s]');
+xlabel('Time [t]');
 ylabel('Pitch [°]');
 grid on;
 hold on;
 syms x;
-axis([0,31,-5,30]);
 fplot(25*heaviside(x-5), [0,46]);
 plot(time2, data2, 'g');
 plot(time3, data3, 'm');

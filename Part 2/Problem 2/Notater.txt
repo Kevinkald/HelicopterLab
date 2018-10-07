@@ -1,1 +1,6 @@
 Joystick_gain_x = 0.8; gir stabilt system og håndterer joystick fra maks venstre til maks høyre etc.
+
+----------------------
+TOdo:
+
+Må kjøre plot her også, teste ulike Krp..
