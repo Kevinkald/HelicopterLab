@@ -86,4 +86,3 @@ P = inv(C*inv(B*K-A)*B);
 
 
 eig(A-B*K)
-
