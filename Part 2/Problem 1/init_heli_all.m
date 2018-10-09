@@ -41,14 +41,7 @@ omega0 = 3*pi/4;
 zeta = 1.0;
 k_pp = (omega0^2)/k1;
 k_pd = (2*zeta * omega0)/k1;
-%k_pp =10;
-%k_pd = 2*k_pp/(sqrt(k1*k_pp));
 pitchControler = (k1*k_pp)/(s^2+k1*k_pd*s+k1*k_pp);
 
 %margin(1/(1+pitchControler));
 eig(pitchControler)
-
-%%%%%%%%%%%%%%Problem 2
-
-k_rp = 1;
-
