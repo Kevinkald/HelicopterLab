@@ -34,10 +34,6 @@ j_lambda = m_c*(l_c)^2 + 2*m_p*((l_h)^2 + (l_p)^2);
 k1 = (l_p*k_f)/(j_p);
 k2 = ((k_f*l_h)/(j_e));
 k3 = (-k_f*l_h*g*(m_c*l_c - 2*m_p*l_h))/(j_lambda*k_f*l_h);
-L1 = l_h*k_f;
-L2 = k2*j_e;
-L3 = l_h*k_f;
-L4 = k_f*l_h*l_p;
 
 %%%%%%%%%% Transer functions
 s = tf('s');
@@ -70,12 +66,12 @@ B = [0, 0;
 C = [1,0,0;
      0,0,1];%?
  
-R = [10, 0;%vs
-     0, 10];%vd
+R = [0.1, 0;%vs
+     0, 1];%vd
 
 
-Q = [10, 0, 0;%p
-     0, 3, 0;%pdot
+Q = [100, 0, 0;%p
+     0, 30, 0;%pdot
      0, 0, 1000];%edot
  
  
@@ -86,3 +82,4 @@ P = inv(C*inv(B*K-A)*B);
 
 
 eig(A-B*K)
+

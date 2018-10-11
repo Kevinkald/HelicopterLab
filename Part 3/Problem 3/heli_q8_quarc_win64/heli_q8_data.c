@@ -3,9 +3,9 @@
  *
  * Code generation for model "heli_q8".
  *
- * Model version              : 1.80
+ * Model version              : 1.81
  * Simulink Coder version : 8.6 (R2014a) 27-Dec-2013
- * C source code generated on : Wed Sep 26 15:47:49 2018
+ * C source code generated on : Sun Oct 07 12:34:47 2018
  *
  * Target selection: quarc_win64.tlc
  * Note: GRT includes extra infrastructure and instrumentation for prototyping
@@ -28,15 +28,15 @@ P_heli_q8_T heli_q8_P = {
   /*  Variable: K
    * Referenced by: '<S4>/State feedback'
    */
-  { 6.0206309102652133E-16, 18.821307681380951, 2.1764959311252014E-16,
-    12.712081141860558, 27.260198434520767, 1.3525053503315393E-15,
-    1.4986262019026926E-15, 9.9999999999999911, 31.622776601683757,
-    1.9457600572378531E-16 },
+  { 5.2264909923142158E-15, 50.260307153551452, 3.1626291401385666E-15,
+    34.124599308373952, 58.634942668785669, 1.9653024717305518E-14,
+    4.2094843272601969E-15, 22.360679774997987, 70.710678118654769,
+    9.90526651563988E-15 },
 
   /*  Variable: P
    * Referenced by: '<S4>/Reference feed forward '
    */
-  { -0.0, 3.1622776601683769, 3.1622776601683782, 0.0 },
+  { -0.0, 31.622776601683835, 100.0, 0.0 },
   10.0,                                /* Mask Parameter: HILInitialize_analog_input_maxi
                                         * Referenced by: '<Root>/HIL Initialize'
                                         */
@@ -255,47 +255,32 @@ P_heli_q8_T heli_q8_P = {
   0,                                   /* Mask Parameter: HILInitialize_set_pwm_params__f
                                         * Referenced by: '<Root>/HIL Initialize'
                                         */
-  1.0,                                 /* Expression: 1
-                                        * Referenced by: '<Root>/Step4'
-                                        */
   0.0,                                 /* Expression: 0
-                                        * Referenced by: '<Root>/Step4'
+                                        * Referenced by: '<S3>/Rate Transition: x'
                                         */
-  0.087266462599716474,                /* Expression: pi/36
-                                        * Referenced by: '<Root>/Step4'
+  -0.1,                                /* Expression: -0.1
+                                        * Referenced by: '<S3>/Dead Zone: x'
                                         */
-  10.0,                                /* Expression: 10
-                                        * Referenced by: '<Root>/Step5'
+  0.1,                                 /* Expression: 0.1
+                                        * Referenced by: '<S3>/Dead Zone: x'
                                         */
-  0.0,                                 /* Expression: 0
-                                        * Referenced by: '<Root>/Step5'
-                                        */
-  0.087266462599716474,                /* Expression: pi/36
-                                        * Referenced by: '<Root>/Step5'
+  1.1111111111111112,                  /* Expression: 10/9
+                                        * Referenced by: '<S3>/Gain: x'
                                         */
   57.295779513082323,                  /* Expression: 180/pi
-                                        * Referenced by: '<Root>/rad to grad '
+                                        * Referenced by: '<Root>/pitch_ref'
                                         */
-  -1.1111111111111112,                 /* Computed Parameter: TransferFcn_A
-                                        * Referenced by: '<Root>/Transfer Fcn'
+  -10.0,                               /* Computed Parameter: pitch_A
+                                        * Referenced by: '<Root>/pitch'
                                         */
-  1.1111111111111112,                  /* Computed Parameter: TransferFcn_C
-                                        * Referenced by: '<Root>/Transfer Fcn'
+  10.0,                                /* Computed Parameter: pitch_C
+                                        * Referenced by: '<Root>/pitch'
                                         */
-  11.0,                                /* Expression: 11
-                                        * Referenced by: '<Root>/Step6'
+  -1.1111111111111112,                 /* Computed Parameter: elevation_rate_A
+                                        * Referenced by: '<Root>/elevation_rate'
                                         */
-  0.0,                                 /* Expression: 0
-                                        * Referenced by: '<Root>/Step6'
-                                        */
-  0.3490658503988659,                  /* Expression: pi/9
-                                        * Referenced by: '<Root>/Step6'
-                                        */
-  -10.0,                               /* Computed Parameter: TransferFcn1_A
-                                        * Referenced by: '<Root>/Transfer Fcn1'
-                                        */
-  10.0,                                /* Computed Parameter: TransferFcn1_C
-                                        * Referenced by: '<Root>/Transfer Fcn1'
+  1.1111111111111112,                  /* Computed Parameter: elevation_rate_C
+                                        * Referenced by: '<Root>/elevation_rate'
                                         */
   0.00076699039394282058,              /* Expression: 2*pi/8192
                                         * Referenced by: '<S2>/Travel: Count to rad'
@@ -366,6 +351,21 @@ P_heli_q8_T heli_q8_P = {
   3.3333333333333335,                  /* Computed Parameter: TransferFcn2_C
                                         * Referenced by: '<Root>/Transfer Fcn2'
                                         */
+  0.0,                                 /* Expression: 0
+                                        * Referenced by: '<S3>/Rate Transition: y'
+                                        */
+  -0.1,                                /* Expression: -0.1
+                                        * Referenced by: '<S3>/Dead Zone: y'
+                                        */
+  0.1,                                 /* Expression: 0.1
+                                        * Referenced by: '<S3>/Dead Zone: y'
+                                        */
+  1.1111111111111112,                  /* Expression: 10/9
+                                        * Referenced by: '<S3>/Gain: y'
+                                        */
+  57.295779513082323,                  /* Expression: 180/pi
+                                        * Referenced by: '<Root>/elevation_rate_ref'
+                                        */
   -2.5,                                /* Computed Parameter: TransferFcn3_A
                                         * Referenced by: '<Root>/Transfer Fcn3'
                                         */
@@ -398,30 +398,6 @@ P_heli_q8_T heli_q8_P = {
                                         */
   -5.0,                                /* Expression: -5
                                         * Referenced by: '<S2>/Back motor: Saturation'
-                                        */
-  0.0,                                 /* Expression: 0
-                                        * Referenced by: '<S3>/Rate Transition: x'
-                                        */
-  -0.1,                                /* Expression: -0.1
-                                        * Referenced by: '<S3>/Dead Zone: x'
-                                        */
-  0.1,                                 /* Expression: 0.1
-                                        * Referenced by: '<S3>/Dead Zone: x'
-                                        */
-  1.1111111111111112,                  /* Expression: 10/9
-                                        * Referenced by: '<S3>/Gain: x'
-                                        */
-  0.0,                                 /* Expression: 0
-                                        * Referenced by: '<S3>/Rate Transition: y'
-                                        */
-  -0.1,                                /* Expression: -0.1
-                                        * Referenced by: '<S3>/Dead Zone: y'
-                                        */
-  0.1,                                 /* Expression: 0.1
-                                        * Referenced by: '<S3>/Dead Zone: y'
-                                        */
-  1.1111111111111112,                  /* Expression: 10/9
-                                        * Referenced by: '<S3>/Gain: y'
                                         */
   12U,                                 /* Computed Parameter: GameController_BufferSize
                                         * Referenced by: '<S3>/Game Controller'
