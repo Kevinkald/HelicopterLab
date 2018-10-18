@@ -129,7 +129,7 @@ RELATIVE_PATH_TO_ANCHOR   = ..
 MODELREF_TARGET_TYPE      = NONE
 
 #-- Support for parallel builds
-START_DIR         = C:\Users\henrikdf\Desktop\HELICO~1\PART2~1\PROBLE~2
+START_DIR         = C:\Users\kevinkk\Desktop\HELICO~1\PART2~1\PROBLE~2
 MASTER_ANCHOR_DIR = 
 
 #-- Support multi-instance code

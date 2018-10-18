@@ -3,9 +3,9 @@
  *
  * Code generation for model "heli_q8".
  *
- * Model version              : 1.65
+ * Model version              : 1.68
  * Simulink Coder version : 8.6 (R2014a) 27-Dec-2013
- * C source code generated on : Wed Sep 12 13:28:21 2018
+ * C source code generated on : Wed Oct 17 17:17:51 2018
  *
  * Target selection: quarc_win64.tlc
  * Note: GRT includes extra infrastructure and instrumentation for prototyping
@@ -18,17 +18,17 @@
 
 /* Block parameters (auto storage) */
 P_heli_q8_T heli_q8_P = {
-  1.0,                                 /* Variable: Joystick_gain_x
+  0.8,                                 /* Variable: Joystick_gain_x
                                         * Referenced by: '<S4>/Joystick_gain_x'
                                         */
   -1.0,                                /* Variable: Joystick_gain_y
                                         * Referenced by: '<S4>/Joystick_gain_y'
                                         */
   7.7111819679022187,                  /* Variable: k_pd
-                                        * Referenced by: '<S5>/K_ep2'
+                                        * Referenced by: '<S5>/K_pd'
                                         */
   9.0845222328208859,                  /* Variable: k_pp
-                                        * Referenced by: '<S5>/K_ep1'
+                                        * Referenced by: '<S5>/K_pp'
                                         */
   10.0,                                /* Mask Parameter: HILInitialize_analog_input_maxi
                                         * Referenced by: '<Root>/HIL Initialize'
@@ -248,29 +248,8 @@ P_heli_q8_T heli_q8_P = {
   0,                                   /* Mask Parameter: HILInitialize_set_pwm_params__f
                                         * Referenced by: '<Root>/HIL Initialize'
                                         */
-  0.0015339807878856412,               /* Expression: 2*pi /4096
-                                        * Referenced by: '<S3>/Pitch: Count to rad'
-                                        */
-  57.295779513082323,                  /* Expression: 180/pi
-                                        * Referenced by: '<S9>/Gain'
-                                        */
-  5.0,                                 /* Expression: 5
-                                        * Referenced by: '<Root>/Step'
-                                        */
   0.0,                                 /* Expression: 0
-                                        * Referenced by: '<Root>/Step'
-                                        */
-  0.17453292519943295,                 /* Expression: pi/18
-                                        * Referenced by: '<Root>/Step'
-                                        */
-  -0.0015339807878856412,              /* Expression: -2 * pi /4096
-                                        * Referenced by: '<S3>/Elevation: Count to rad'
-                                        */
-  57.295779513082323,                  /* Expression: 180/pi
-                                        * Referenced by: '<S7>/Gain'
-                                        */
-  -29.0,                               /* Expression: -29
-                                        * Referenced by: '<S3>/Elevation offset'
+                                        * Referenced by: '<Root>/e_~_c [rad//s]'
                                         */
   0.00076699039394282058,              /* Expression: 2*pi/8192
                                         * Referenced by: '<S3>/Travel: Count to rad'
@@ -293,6 +272,12 @@ P_heli_q8_T heli_q8_P = {
   57.295779513082323,                  /* Expression: 180/pi
                                         * Referenced by: '<S12>/Gain'
                                         */
+  0.0015339807878856412,               /* Expression: 2*pi /4096
+                                        * Referenced by: '<S3>/Pitch: Count to rad'
+                                        */
+  57.295779513082323,                  /* Expression: 180/pi
+                                        * Referenced by: '<S9>/Gain'
+                                        */
   -50.0,                               /* Computed Parameter: PitchTransferFcn_A
                                         * Referenced by: '<S3>/Pitch: Transfer Fcn'
                                         */
@@ -308,6 +293,15 @@ P_heli_q8_T heli_q8_P = {
   0.0,                                 /* Expression: 0
                                         * Referenced by: '<S3>/Pitch offset '
                                         */
+  -0.0015339807878856412,              /* Expression: -2 * pi /4096
+                                        * Referenced by: '<S3>/Elevation: Count to rad'
+                                        */
+  57.295779513082323,                  /* Expression: 180/pi
+                                        * Referenced by: '<S7>/Gain'
+                                        */
+  -29.0,                               /* Expression: -29
+                                        * Referenced by: '<S3>/Elevation offset'
+                                        */
   -50.0,                               /* Computed Parameter: ElevationTransferFcn_A
                                         * Referenced by: '<S3>/Elevation: Transfer Fcn'
                                         */
@@ -321,10 +315,22 @@ P_heli_q8_T heli_q8_P = {
                                         * Referenced by: '<S8>/Gain'
                                         */
   0.017453292519943295,                /* Expression: pi/180
-                                        * Referenced by: '<Root>/degtorad3'
+                                        * Referenced by: '<Root>/Deg to rad'
                                         */
   0.0,                                 /* Expression: 0
-                                        * Referenced by: '<Root>/p_*1'
+                                        * Referenced by: '<Root>/e_* [rad]'
+                                        */
+  5.0,                                 /* Expression: 5
+                                        * Referenced by: '<Root>/Step'
+                                        */
+  0.0,                                 /* Expression: 0
+                                        * Referenced by: '<Root>/Step'
+                                        */
+  0.17453292519943295,                 /* Expression: pi/18
+                                        * Referenced by: '<Root>/Step'
+                                        */
+  0.0,                                 /* Expression: 0
+                                        * Referenced by: '<Root>/p_*1 [rad]'
                                         */
   0.0,                                 /* Expression: 0
                                         * Referenced by: '<S6>/Integrator'
@@ -334,12 +340,6 @@ P_heli_q8_T heli_q8_P = {
                                         */
   0.0,                                 /* Expression: -inf
                                         * Referenced by: '<S6>/Integrator'
-                                        */
-  0.0,                                 /* Expression: 0
-                                        * Referenced by: '<Root>/e_+'
-                                        */
-  0.0,                                 /* Expression: 0
-                                        * Referenced by: '<Root>/e_~_c'
                                         */
   15.0,                                /* Expression: 15
                                         * Referenced by: '<S6>/K_ep'

@@ -101,7 +101,7 @@ S_FUNCTIONS_LIB      = C:\PROGRA~1\Quanser\QUARC\lib\win64\hil.lib C:\PROGRA~1\Q
 SOLVER               = 
 NUMST                = 3
 TID01EQ              = 1
-NCSTATES             = 9
+NCSTATES             = 5
 COMPUTER             = PCWIN64
 BUILDARGS            =  MAT_FILE=0 SHOW_TIMES=0 DEBUG=0 DEBUG_HEAP=0 OPTS="-DON_TARGET_WAIT_FOR_START=0"
 MULTITASKING         = 1
@@ -129,7 +129,7 @@ RELATIVE_PATH_TO_ANCHOR   = ..
 MODELREF_TARGET_TYPE      = NONE
 
 #-- Support for parallel builds
-START_DIR         = C:\Users\henrikdf\Desktop\HELICO~1\PROBLE~2
+START_DIR         = C:\Users\kevinkk\Desktop\HELICO~1\PART3~1\PROBLE~2
 MASTER_ANCHOR_DIR = 
 
 #-- Support multi-instance code

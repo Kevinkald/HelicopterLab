@@ -1,6 +1,6 @@
 filename1 = 'FILENAME.mat';
 m1 = matfile(filename1);
-array = m1.estimationvsmeasured;
+array = m1.ans;
 
 %%Time
 time = array(1,:);

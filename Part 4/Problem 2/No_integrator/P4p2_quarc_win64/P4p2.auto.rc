@@ -1,0 +1,2 @@
+#include <winuser.rh>
+1 RT_MANIFEST "P4p2.auto.manifest"

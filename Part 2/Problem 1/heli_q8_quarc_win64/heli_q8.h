@@ -3,9 +3,9 @@
  *
  * Code generation for model "heli_q8".
  *
- * Model version              : 1.65
+ * Model version              : 1.68
  * Simulink Coder version : 8.6 (R2014a) 27-Dec-2013
- * C source code generated on : Wed Sep 12 13:28:21 2018
+ * C source code generated on : Wed Oct 17 17:17:51 2018
  *
  * Target selection: quarc_win64.tlc
  * Note: GRT includes extra infrastructure and instrumentation for prototyping
@@ -15,12 +15,9 @@
  */
 #ifndef RTW_HEADER_heli_q8_h_
 #define RTW_HEADER_heli_q8_h_
-#include <stddef.h>
 #include <string.h>
 #ifndef heli_q8_COMMON_INCLUDES_
 # define heli_q8_COMMON_INCLUDES_
-#include <stdio.h>
-#include <string.h>
 #include "rtwtypes.h"
 #include "simstruc.h"
 #include "fixedpoint.h"
@@ -797,20 +794,22 @@
 
 /* Block signals (auto storage) */
 typedef struct {
-  real_T PitchCounttorad;              /* '<S3>/Pitch: Count to rad' */
-  real_T Gain;                         /* '<S9>/Gain' */
-  real_T Step;                         /* '<Root>/Step' */
-  real_T ElevationCounttorad;          /* '<S3>/Elevation: Count to rad' */
-  real_T Sum2;                         /* '<S3>/Sum2' */
+  real_T e__crads;                     /* '<Root>/e_~_c [rad//s]' */
   real_T TravelCounttorad;             /* '<S3>/Travel: Count to rad' */
   real_T Sum;                          /* '<S3>/Sum' */
-  real_T Gain_d;                       /* '<S12>/Gain' */
+  real_T Gain;                         /* '<S12>/Gain' */
+  real_T PitchCounttorad;              /* '<S3>/Pitch: Count to rad' */
+  real_T Gain_i;                       /* '<S9>/Gain' */
   real_T Pitchoffset;                  /* '<S3>/Pitch offset ' */
   real_T Sum1;                         /* '<S3>/Sum1' */
-  real_T Gain_dg;                      /* '<S8>/Gain' */
-  real_T p_1;                          /* '<Root>/p_*1' */
-  real_T e_;                           /* '<Root>/e_+' */
-  real_T e__c;                         /* '<Root>/e_~_c' */
+  real_T ElevationCounttorad;          /* '<S3>/Elevation: Count to rad' */
+  real_T Sum2;                         /* '<S3>/Sum2' */
+  real_T Gain_d;                       /* '<S8>/Gain' */
+  real_T e_rad;                        /* '<Root>/e_* [rad]' */
+  real_T Sum_o;                        /* '<Root>/Sum' */
+  real_T Step;                         /* '<Root>/Step' */
+  real_T p_1rad;                       /* '<Root>/p_*1 [rad]' */
+  real_T Sum1_p;                       /* '<Root>/Sum1' */
   real_T K_ei;                         /* '<S6>/K_ei' */
   real_T FrontmotorSaturation;         /* '<S3>/Front motor: Saturation' */
   real_T BackmotorSaturation;          /* '<S3>/Back motor: Saturation' */
@@ -840,19 +839,11 @@ typedef struct {
   t_task HILReadEncoderTimebase_Task;  /* '<S3>/HIL Read Encoder Timebase' */
   struct {
     void *LoggedData;
-  } Scope2_PWORK;                      /* '<Root>/Scope2' */
+  } Elevationscope_PWORK;              /* '<Root>/Elevation scope' */
 
   struct {
     void *LoggedData;
-  } Scope3_PWORK;                      /* '<Root>/Scope3' */
-
-  struct {
-    void *LoggedData;
-  } Scope5_PWORK;                      /* '<Root>/Scope5' */
-
-  struct {
-    void *FilePtr;
-  } ToFile_PWORK;                      /* '<Root>/To File' */
+  } Pitchscope_PWORK;                  /* '<Root>/Pitch scope' */
 
   struct {
     void *LoggedData;
@@ -887,14 +878,6 @@ typedef struct {
     void *LoggedData;
   } YScope_PWORK;                      /* '<S4>/Y: Scope' */
 
-  struct {
-    void *LoggedData;
-  } Scope1_PWORK;                      /* '<Root>/Scope1' */
-
-  struct {
-    void *LoggedData;
-  } Scope4_PWORK;                      /* '<Root>/Scope4' */
-
   int32_T HILInitialize_ClockModes[3]; /* '<Root>/HIL Initialize' */
   int32_T HILInitialize_QuadratureModes[8];/* '<Root>/HIL Initialize' */
   int32_T HILInitialize_InitialEICounts[8];/* '<Root>/HIL Initialize' */
@@ -903,10 +886,6 @@ typedef struct {
   int32_T HILInitialize_POPolarityVals[8];/* '<Root>/HIL Initialize' */
   int32_T HILReadEncoderTimebase_Buffer[3];/* '<S3>/HIL Read Encoder Timebase' */
   uint32_T HILInitialize_POSortedChans[8];/* '<Root>/HIL Initialize' */
-  struct {
-    int_T Count;
-    int_T Decimation;
-  } ToFile_IWORK;                      /* '<Root>/To File' */
 } DW_heli_q8_T;
 
 /* Continuous states (auto storage) */
@@ -966,10 +945,10 @@ struct P_heli_q8_T_ {
                                         * Referenced by: '<S4>/Joystick_gain_y'
                                         */
   real_T k_pd;                         /* Variable: k_pd
-                                        * Referenced by: '<S5>/K_ep2'
+                                        * Referenced by: '<S5>/K_pd'
                                         */
   real_T k_pp;                         /* Variable: k_pp
-                                        * Referenced by: '<S5>/K_ep1'
+                                        * Referenced by: '<S5>/K_pp'
                                         */
   real_T HILInitialize_analog_input_maxi;/* Mask Parameter: HILInitialize_analog_input_maxi
                                           * Referenced by: '<Root>/HIL Initialize'
@@ -1175,34 +1154,13 @@ struct P_heli_q8_T_ {
   boolean_T HILInitialize_set_pwm_params__f;/* Mask Parameter: HILInitialize_set_pwm_params__f
                                              * Referenced by: '<Root>/HIL Initialize'
                                              */
-  real_T PitchCounttorad_Gain;         /* Expression: 2*pi /4096
-                                        * Referenced by: '<S3>/Pitch: Count to rad'
-                                        */
-  real_T Gain_Gain;                    /* Expression: 180/pi
-                                        * Referenced by: '<S9>/Gain'
-                                        */
-  real_T Step_Time;                    /* Expression: 5
-                                        * Referenced by: '<Root>/Step'
-                                        */
-  real_T Step_Y0;                      /* Expression: 0
-                                        * Referenced by: '<Root>/Step'
-                                        */
-  real_T Step_YFinal;                  /* Expression: pi/18
-                                        * Referenced by: '<Root>/Step'
-                                        */
-  real_T ElevationCounttorad_Gain;     /* Expression: -2 * pi /4096
-                                        * Referenced by: '<S3>/Elevation: Count to rad'
-                                        */
-  real_T Gain_Gain_l;                  /* Expression: 180/pi
-                                        * Referenced by: '<S7>/Gain'
-                                        */
-  real_T Elevationoffset_Value;        /* Expression: -29
-                                        * Referenced by: '<S3>/Elevation offset'
+  real_T e__crads_Value;               /* Expression: 0
+                                        * Referenced by: '<Root>/e_~_c [rad//s]'
                                         */
   real_T TravelCounttorad_Gain;        /* Expression: 2*pi/8192
                                         * Referenced by: '<S3>/Travel: Count to rad'
                                         */
-  real_T Gain_Gain_a;                  /* Expression: 180/pi
+  real_T Gain_Gain;                    /* Expression: 180/pi
                                         * Referenced by: '<S11>/Gain'
                                         */
   real_T Traveloffset_Value;           /* Expression: 0
@@ -1217,8 +1175,14 @@ struct P_heli_q8_T_ {
   real_T TravelTransferFcn_D;          /* Computed Parameter: TravelTransferFcn_D
                                         * Referenced by: '<S3>/Travel: Transfer Fcn'
                                         */
-  real_T Gain_Gain_lu;                 /* Expression: 180/pi
+  real_T Gain_Gain_l;                  /* Expression: 180/pi
                                         * Referenced by: '<S12>/Gain'
+                                        */
+  real_T PitchCounttorad_Gain;         /* Expression: 2*pi /4096
+                                        * Referenced by: '<S3>/Pitch: Count to rad'
+                                        */
+  real_T Gain_Gain_a;                  /* Expression: 180/pi
+                                        * Referenced by: '<S9>/Gain'
                                         */
   real_T PitchTransferFcn_A;           /* Computed Parameter: PitchTransferFcn_A
                                         * Referenced by: '<S3>/Pitch: Transfer Fcn'
@@ -1235,6 +1199,15 @@ struct P_heli_q8_T_ {
   real_T Pitchoffset_Value;            /* Expression: 0
                                         * Referenced by: '<S3>/Pitch offset '
                                         */
+  real_T ElevationCounttorad_Gain;     /* Expression: -2 * pi /4096
+                                        * Referenced by: '<S3>/Elevation: Count to rad'
+                                        */
+  real_T Gain_Gain_lv;                 /* Expression: 180/pi
+                                        * Referenced by: '<S7>/Gain'
+                                        */
+  real_T Elevationoffset_Value;        /* Expression: -29
+                                        * Referenced by: '<S3>/Elevation offset'
+                                        */
   real_T ElevationTransferFcn_A;       /* Computed Parameter: ElevationTransferFcn_A
                                         * Referenced by: '<S3>/Elevation: Transfer Fcn'
                                         */
@@ -1247,11 +1220,23 @@ struct P_heli_q8_T_ {
   real_T Gain_Gain_n;                  /* Expression: 180/pi
                                         * Referenced by: '<S8>/Gain'
                                         */
-  real_T degtorad3_Gain;               /* Expression: pi/180
-                                        * Referenced by: '<Root>/degtorad3'
+  real_T Degtorad_Gain;                /* Expression: pi/180
+                                        * Referenced by: '<Root>/Deg to rad'
                                         */
-  real_T p_1_Value;                    /* Expression: 0
-                                        * Referenced by: '<Root>/p_*1'
+  real_T e_rad_Value;                  /* Expression: 0
+                                        * Referenced by: '<Root>/e_* [rad]'
+                                        */
+  real_T Step_Time;                    /* Expression: 5
+                                        * Referenced by: '<Root>/Step'
+                                        */
+  real_T Step_Y0;                      /* Expression: 0
+                                        * Referenced by: '<Root>/Step'
+                                        */
+  real_T Step_YFinal;                  /* Expression: pi/18
+                                        * Referenced by: '<Root>/Step'
+                                        */
+  real_T p_1rad_Value;                 /* Expression: 0
+                                        * Referenced by: '<Root>/p_*1 [rad]'
                                         */
   real_T Integrator_IC;                /* Expression: 0
                                         * Referenced by: '<S6>/Integrator'
@@ -1261,12 +1246,6 @@ struct P_heli_q8_T_ {
                                         */
   real_T Integrator_LowerSat;          /* Expression: -inf
                                         * Referenced by: '<S6>/Integrator'
-                                        */
-  real_T e__Value;                     /* Expression: 0
-                                        * Referenced by: '<Root>/e_+'
-                                        */
-  real_T e__c_Value;                   /* Expression: 0
-                                        * Referenced by: '<Root>/e_~_c'
                                         */
   real_T K_ep_Gain;                    /* Expression: 15
                                         * Referenced by: '<S6>/K_ep'

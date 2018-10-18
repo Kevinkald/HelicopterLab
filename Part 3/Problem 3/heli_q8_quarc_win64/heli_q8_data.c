@@ -3,9 +3,9 @@
  *
  * Code generation for model "heli_q8".
  *
- * Model version              : 1.81
+ * Model version              : 1.85
  * Simulink Coder version : 8.6 (R2014a) 27-Dec-2013
- * C source code generated on : Sun Oct 07 12:34:47 2018
+ * C source code generated on : Wed Oct 17 18:19:31 2018
  *
  * Target selection: quarc_win64.tlc
  * Note: GRT includes extra infrastructure and instrumentation for prototyping
@@ -19,24 +19,24 @@
 /* Block parameters (auto storage) */
 P_heli_q8_T heli_q8_P = {
   0.8,                                 /* Variable: Joystick_gain_x
-                                        * Referenced by: '<S3>/Joystick_gain_x'
+                                        * Referenced by: '<S4>/Joystick_gain_x'
                                         */
   -1.0,                                /* Variable: Joystick_gain_y
-                                        * Referenced by: '<S3>/Joystick_gain_y'
+                                        * Referenced by: '<S4>/Joystick_gain_y'
                                         */
 
   /*  Variable: K
-   * Referenced by: '<S4>/State feedback'
+   * Referenced by: '<S5>/State feedback'
    */
-  { 5.2264909923142158E-15, 50.260307153551452, 3.1626291401385666E-15,
-    34.124599308373952, 58.634942668785669, 1.9653024717305518E-14,
-    4.2094843272601969E-15, 22.360679774997987, 70.710678118654769,
-    9.90526651563988E-15 },
+  { 8.7642130934136953E-15, 25.287050416188048, 1.2290144529658938E-15,
+    21.971745937541883, 58.634942668785655, 1.5274539221507434E-15,
+    6.449143714821423E-15, 9.9999999999999947, 70.710678118654712,
+    3.8245113787458193E-15 },
 
   /*  Variable: P
-   * Referenced by: '<S4>/Reference feed forward '
+   * Referenced by: '<S5>/Reference feed forward '
    */
-  { -0.0, 31.622776601683835, 100.0, 0.0 },
+  { -0.0, 14.142135623730958, 100.0, 0.0 },
   10.0,                                /* Mask Parameter: HILInitialize_analog_input_maxi
                                         * Referenced by: '<Root>/HIL Initialize'
                                         */
@@ -89,7 +89,7 @@ P_heli_q8_T heli_q8_P = {
                                         * Referenced by: '<Root>/HIL Initialize'
                                         */
   0,                                   /* Mask Parameter: HILReadEncoderTimebase_clock
-                                        * Referenced by: '<S2>/HIL Read Encoder Timebase'
+                                        * Referenced by: '<S3>/HIL Read Encoder Timebase'
                                         */
 
   /*  Mask Parameter: HILInitialize_hardware_clocks
@@ -126,12 +126,12 @@ P_heli_q8_T heli_q8_P = {
   { 0U, 1U, 2U, 3U, 4U, 5U, 6U, 7U },
 
   /*  Mask Parameter: HILReadEncoderTimebase_channels
-   * Referenced by: '<S2>/HIL Read Encoder Timebase'
+   * Referenced by: '<S3>/HIL Read Encoder Timebase'
    */
   { 0U, 1U, 2U },
 
   /*  Mask Parameter: HILWriteAnalog_channels
-   * Referenced by: '<S2>/HIL Write Analog'
+   * Referenced by: '<S3>/HIL Write Analog'
    */
   { 0U, 1U },
 
@@ -148,7 +148,7 @@ P_heli_q8_T heli_q8_P = {
                                         * Referenced by: '<Root>/HIL Initialize'
                                         */
   500U,                                /* Mask Parameter: HILReadEncoderTimebase_samples_
-                                        * Referenced by: '<S2>/HIL Read Encoder Timebase'
+                                        * Referenced by: '<S3>/HIL Read Encoder Timebase'
                                         */
   0,                                   /* Mask Parameter: HILInitialize_active
                                         * Referenced by: '<Root>/HIL Initialize'
@@ -256,130 +256,106 @@ P_heli_q8_T heli_q8_P = {
                                         * Referenced by: '<Root>/HIL Initialize'
                                         */
   0.0,                                 /* Expression: 0
-                                        * Referenced by: '<S3>/Rate Transition: x'
+                                        * Referenced by: '<S4>/Rate Transition: x'
                                         */
   -0.1,                                /* Expression: -0.1
-                                        * Referenced by: '<S3>/Dead Zone: x'
+                                        * Referenced by: '<S4>/Dead Zone: x'
                                         */
   0.1,                                 /* Expression: 0.1
-                                        * Referenced by: '<S3>/Dead Zone: x'
+                                        * Referenced by: '<S4>/Dead Zone: x'
                                         */
   1.1111111111111112,                  /* Expression: 10/9
-                                        * Referenced by: '<S3>/Gain: x'
-                                        */
-  57.295779513082323,                  /* Expression: 180/pi
-                                        * Referenced by: '<Root>/pitch_ref'
-                                        */
-  -10.0,                               /* Computed Parameter: pitch_A
-                                        * Referenced by: '<Root>/pitch'
-                                        */
-  10.0,                                /* Computed Parameter: pitch_C
-                                        * Referenced by: '<Root>/pitch'
-                                        */
-  -1.1111111111111112,                 /* Computed Parameter: elevation_rate_A
-                                        * Referenced by: '<Root>/elevation_rate'
-                                        */
-  1.1111111111111112,                  /* Computed Parameter: elevation_rate_C
-                                        * Referenced by: '<Root>/elevation_rate'
+                                        * Referenced by: '<S4>/Gain: x'
                                         */
   0.00076699039394282058,              /* Expression: 2*pi/8192
-                                        * Referenced by: '<S2>/Travel: Count to rad'
+                                        * Referenced by: '<S3>/Travel: Count to rad'
+                                        */
+  57.295779513082323,                  /* Expression: 180/pi
+                                        * Referenced by: '<S10>/Gain'
+                                        */
+  0.0,                                 /* Expression: 0
+                                        * Referenced by: '<S3>/Travel offset '
+                                        */
+  -50.0,                               /* Computed Parameter: TravelTransferFcn_A
+                                        * Referenced by: '<S3>/Travel: Transfer Fcn'
+                                        */
+  -2500.0,                             /* Computed Parameter: TravelTransferFcn_C
+                                        * Referenced by: '<S3>/Travel: Transfer Fcn'
+                                        */
+  50.0,                                /* Computed Parameter: TravelTransferFcn_D
+                                        * Referenced by: '<S3>/Travel: Transfer Fcn'
+                                        */
+  57.295779513082323,                  /* Expression: 180/pi
+                                        * Referenced by: '<S11>/Gain'
+                                        */
+  0.0015339807878856412,               /* Expression: 2*pi /4096
+                                        * Referenced by: '<S3>/Pitch: Count to rad'
+                                        */
+  57.295779513082323,                  /* Expression: 180/pi
+                                        * Referenced by: '<S8>/Gain'
+                                        */
+  -50.0,                               /* Computed Parameter: PitchTransferFcn_A
+                                        * Referenced by: '<S3>/Pitch: Transfer Fcn'
+                                        */
+  -2500.0,                             /* Computed Parameter: PitchTransferFcn_C
+                                        * Referenced by: '<S3>/Pitch: Transfer Fcn'
+                                        */
+  50.0,                                /* Computed Parameter: PitchTransferFcn_D
+                                        * Referenced by: '<S3>/Pitch: Transfer Fcn'
                                         */
   57.295779513082323,                  /* Expression: 180/pi
                                         * Referenced by: '<S9>/Gain'
                                         */
   0.0,                                 /* Expression: 0
-                                        * Referenced by: '<S2>/Travel offset '
-                                        */
-  -50.0,                               /* Computed Parameter: TravelTransferFcn_A
-                                        * Referenced by: '<S2>/Travel: Transfer Fcn'
-                                        */
-  -2500.0,                             /* Computed Parameter: TravelTransferFcn_C
-                                        * Referenced by: '<S2>/Travel: Transfer Fcn'
-                                        */
-  50.0,                                /* Computed Parameter: TravelTransferFcn_D
-                                        * Referenced by: '<S2>/Travel: Transfer Fcn'
-                                        */
-  57.295779513082323,                  /* Expression: 180/pi
-                                        * Referenced by: '<S10>/Gain'
-                                        */
-  0.0015339807878856412,               /* Expression: 2*pi /4096
-                                        * Referenced by: '<S2>/Pitch: Count to rad'
-                                        */
-  57.295779513082323,                  /* Expression: 180/pi
-                                        * Referenced by: '<S7>/Gain'
-                                        */
-  -50.0,                               /* Computed Parameter: PitchTransferFcn_A
-                                        * Referenced by: '<S2>/Pitch: Transfer Fcn'
-                                        */
-  -2500.0,                             /* Computed Parameter: PitchTransferFcn_C
-                                        * Referenced by: '<S2>/Pitch: Transfer Fcn'
-                                        */
-  50.0,                                /* Computed Parameter: PitchTransferFcn_D
-                                        * Referenced by: '<S2>/Pitch: Transfer Fcn'
-                                        */
-  57.295779513082323,                  /* Expression: 180/pi
-                                        * Referenced by: '<S8>/Gain'
-                                        */
-  0.0,                                 /* Expression: 0
-                                        * Referenced by: '<S2>/Pitch offset '
+                                        * Referenced by: '<S3>/Pitch offset '
                                         */
   -0.0015339807878856412,              /* Expression: -2 * pi /4096
-                                        * Referenced by: '<S2>/Elevation: Count to rad'
-                                        */
-  57.295779513082323,                  /* Expression: 180/pi
-                                        * Referenced by: '<S5>/Gain'
-                                        */
-  -29.0,                               /* Expression: -29
-                                        * Referenced by: '<S2>/Elevation offset'
-                                        */
-  -50.0,                               /* Computed Parameter: ElevationTransferFcn_A
-                                        * Referenced by: '<S2>/Elevation: Transfer Fcn'
-                                        */
-  -2500.0,                             /* Computed Parameter: ElevationTransferFcn_C
-                                        * Referenced by: '<S2>/Elevation: Transfer Fcn'
-                                        */
-  50.0,                                /* Computed Parameter: ElevationTransferFcn_D
-                                        * Referenced by: '<S2>/Elevation: Transfer Fcn'
+                                        * Referenced by: '<S3>/Elevation: Count to rad'
                                         */
   57.295779513082323,                  /* Expression: 180/pi
                                         * Referenced by: '<S6>/Gain'
                                         */
-  -3.3333333333333335,                 /* Computed Parameter: TransferFcn2_A
-                                        * Referenced by: '<Root>/Transfer Fcn2'
+  -29.0,                               /* Expression: -29
+                                        * Referenced by: '<S3>/Elevation offset'
                                         */
-  3.3333333333333335,                  /* Computed Parameter: TransferFcn2_C
-                                        * Referenced by: '<Root>/Transfer Fcn2'
+  -50.0,                               /* Computed Parameter: ElevationTransferFcn_A
+                                        * Referenced by: '<S3>/Elevation: Transfer Fcn'
                                         */
-  0.0,                                 /* Expression: 0
-                                        * Referenced by: '<S3>/Rate Transition: y'
+  -2500.0,                             /* Computed Parameter: ElevationTransferFcn_C
+                                        * Referenced by: '<S3>/Elevation: Transfer Fcn'
                                         */
-  -0.1,                                /* Expression: -0.1
-                                        * Referenced by: '<S3>/Dead Zone: y'
-                                        */
-  0.1,                                 /* Expression: 0.1
-                                        * Referenced by: '<S3>/Dead Zone: y'
-                                        */
-  1.1111111111111112,                  /* Expression: 10/9
-                                        * Referenced by: '<S3>/Gain: y'
+  50.0,                                /* Computed Parameter: ElevationTransferFcn_D
+                                        * Referenced by: '<S3>/Elevation: Transfer Fcn'
                                         */
   57.295779513082323,                  /* Expression: 180/pi
-                                        * Referenced by: '<Root>/elevation_rate_ref'
-                                        */
-  -2.5,                                /* Computed Parameter: TransferFcn3_A
-                                        * Referenced by: '<Root>/Transfer Fcn3'
-                                        */
-  2.5,                                 /* Computed Parameter: TransferFcn3_C
-                                        * Referenced by: '<Root>/Transfer Fcn3'
+                                        * Referenced by: '<S7>/Gain'
                                         */
   0.017453292519943295,                /* Expression: pi/180
-                                        * Referenced by: '<Root>/degtorad3'
+                                        * Referenced by: '<Root>/Deg to rad'
+                                        */
+  57.295779513082323,                  /* Expression: 180/pi
+                                        * Referenced by: '<S2>/Pitch'
                                         */
   0.0,                                 /* Expression: 0
-                                        * Referenced by: '<S4>/Integrator1'
+                                        * Referenced by: '<S4>/Rate Transition: y'
+                                        */
+  -0.1,                                /* Expression: -0.1
+                                        * Referenced by: '<S4>/Dead Zone: y'
+                                        */
+  0.1,                                 /* Expression: 0.1
+                                        * Referenced by: '<S4>/Dead Zone: y'
+                                        */
+  1.1111111111111112,                  /* Expression: 10/9
+                                        * Referenced by: '<S4>/Gain: y'
+                                        */
+  57.295779513082323,                  /* Expression: 180/pi
+                                        * Referenced by: '<S2>/Elevation rate'
                                         */
   0.0,                                 /* Expression: 0
-                                        * Referenced by: '<S4>/Integrator'
+                                        * Referenced by: '<S5>/Integrator1'
+                                        */
+  0.0,                                 /* Expression: 0
+                                        * Referenced by: '<S5>/Integrator'
                                         */
   0.5,                                 /* Expression: 0.5
                                         * Referenced by: '<S1>/Back gain'
@@ -388,33 +364,33 @@ P_heli_q8_T heli_q8_P = {
                                         * Referenced by: '<S1>/Front gain'
                                         */
   5.0,                                 /* Expression: 5
-                                        * Referenced by: '<S2>/Front motor: Saturation'
+                                        * Referenced by: '<S3>/Front motor: Saturation'
                                         */
   -5.0,                                /* Expression: -5
-                                        * Referenced by: '<S2>/Front motor: Saturation'
+                                        * Referenced by: '<S3>/Front motor: Saturation'
                                         */
   5.0,                                 /* Expression: 5
-                                        * Referenced by: '<S2>/Back motor: Saturation'
+                                        * Referenced by: '<S3>/Back motor: Saturation'
                                         */
   -5.0,                                /* Expression: -5
-                                        * Referenced by: '<S2>/Back motor: Saturation'
+                                        * Referenced by: '<S3>/Back motor: Saturation'
                                         */
   12U,                                 /* Computed Parameter: GameController_BufferSize
-                                        * Referenced by: '<S3>/Game Controller'
+                                        * Referenced by: '<S4>/Game Controller'
                                         */
   1U,                                  /* Computed Parameter: GameController_ControllerNumber
-                                        * Referenced by: '<S3>/Game Controller'
+                                        * Referenced by: '<S4>/Game Controller'
                                         */
   1,                                   /* Computed Parameter: HILReadEncoderTimebase_Active
-                                        * Referenced by: '<S2>/HIL Read Encoder Timebase'
+                                        * Referenced by: '<S3>/HIL Read Encoder Timebase'
                                         */
   0,                                   /* Computed Parameter: HILWriteAnalog_Active
-                                        * Referenced by: '<S2>/HIL Write Analog'
+                                        * Referenced by: '<S3>/HIL Write Analog'
                                         */
   0,                                   /* Computed Parameter: GameController_AutoCenter
-                                        * Referenced by: '<S3>/Game Controller'
+                                        * Referenced by: '<S4>/Game Controller'
                                         */
   1                                    /* Computed Parameter: GameController_Enabled
-                                        * Referenced by: '<S3>/Game Controller'
+                                        * Referenced by: '<S4>/Game Controller'
                                         */
 };
