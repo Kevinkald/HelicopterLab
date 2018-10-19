@@ -3,9 +3,9 @@
 % the course TTK4115. Run this file before you execute QuaRC_ -> Build 
 % to build the file heli_q8.mdl.
 
-% Oppdatert høsten 2006 av Jostein Bakkeheim
-% Oppdatert høsten 2008 av Arnfinn Aas Eielsen
-% Oppdatert høsten 2009 av Jonathan Ronen
+% Oppdatert hï¿½sten 2006 av Jostein Bakkeheim
+% Oppdatert hï¿½sten 2008 av Arnfinn Aas Eielsen
+% Oppdatert hï¿½sten 2009 av Jonathan Ronen
 % Updated fall 2010, Dominik Breu
 % Updated fall 2013, Mark Haring
 % Updated spring 2015, Mark Haring
@@ -41,16 +41,9 @@ omega0 = 3*pi/4;
 zeta = 1.0;
 k_pp = (omega0^2)/k1;
 k_pd = (2*zeta * omega0)/k1;
-%k_pp =10;
-%k_pd = 2*k_pp/(sqrt(k1*k_pp));
 pitchControler = (k1*k_pp)/(s^2+k1*k_pd*s+k1*k_pp);
 
-%margin(1/(1+pitchControler));
 eig(pitchControler)
-
-%%%%%%%%%%%%%%Problem 2
 
 k_rp = -1.0;
 offset_travel = -0.081;
-
-%K_rp = -2 made the system crash into floor

@@ -1,4 +1,4 @@
-filename1 = 'Plots/FILENAME.mat';
+filename1 = 'Plots/problem3_reduced_C_to_pitchel_evation_optimized_for_pitch_rate.mat';
 m1 = matfile(filename1);
 array = m1.estimationvsmeasured;
 
@@ -30,7 +30,7 @@ plot(time, pitch_mes, 'r');
 plot(time, pitch_est, '--b');
 legend('Measured pitch','Estimated pitch');
 xlabel('Time t [s]');
-ylabel('Pitch [°]');
+ylabel('Pitch [ï¿½]');
 
 %%Pitch rate
 subplot(3,2,2);
@@ -40,7 +40,7 @@ plot(time, pitch_rate_mes, 'r');
 plot(time, pitch_rate_est, '--b');
 legend('Measured pitch rate','Estimated pitch rate');
 xlabel('Time t [s]');
-ylabel('Pitch rate [°/s]');
+ylabel('Pitch rate [ï¿½/s]');
 
 %%Elevation
 subplot(3,2,3);
@@ -50,7 +50,7 @@ plot(time, elevation_mes, 'r');
 plot(time, elevation_est, '--b');
 legend('Measured elevation','Estimated elevation');
 xlabel('Time t [s]');
-ylabel('Elevation [°]');
+ylabel('Elevation [ï¿½]');
 
 %%Elevation rate
 subplot(3,2,4);
@@ -60,7 +60,7 @@ plot(time, elevation_rate_mes, 'r');
 plot(time, elevation_rate_est, '--b');
 legend('Measured elevation rate','Estimated elevation rate');
 xlabel('Time t [s]');
-ylabel('Elevation rate [°/s]');
+ylabel('Elevation rate [ï¿½/s]');
 
 %%Travel
 subplot(3,2,5);
@@ -70,7 +70,7 @@ plot(time, travel_mes, 'r');
 plot(time, travel_est, '--b');
 legend('Measured travel','Estimated travel');
 xlabel('Time t [s]');
-ylabel('Travel [°]');
+ylabel('Travel [ï¿½]');
 
 %%Travel rate
 subplot(3,2,6);
@@ -80,4 +80,4 @@ plot(time, travel_rate_mes, 'r');
 plot(time, travel_rate_est, '--b');
 legend('Measured travel rate','Estimated travel rate');
 xlabel('Time t [s]');
-ylabel('Travel rate [°/s]');
+ylabel('Travel rate [ï¿½/s]');
