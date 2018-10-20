@@ -1,6 +1,6 @@
-filename1 = 'Plots/problem3_reduced_C_to_pitchel_evation_optimized_for_pitch_rate.mat';
+filename1 = 'FILENAME.mat';
 m1 = matfile(filename1);
-array = m1.estimationvsmeasured;
+array = m1.ans;
 
 %%Time
 time = array(1,:);

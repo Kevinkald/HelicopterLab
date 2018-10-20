@@ -364,8 +364,8 @@
       paramMap.sections(4) = section;
       clear section
       
-      section.nData     = 41;
-      section.data(41)  = dumData; %prealloc
+      section.nData     = 42;
+      section.data(42)  = dumData; %prealloc
       
 	  ;% P4p2_integral_P.PitchCounttorad_Gain
 	  section.data(1).logicalSrcIdx = 77;
@@ -507,29 +507,33 @@
 	  section.data(35).logicalSrcIdx = 111;
 	  section.data(35).dtTransOffset = 34;
 	
-	  ;% P4p2_integral_P.Backgain_Gain
+	  ;% P4p2_integral_P.V_s_star1_Value
 	  section.data(36).logicalSrcIdx = 112;
 	  section.data(36).dtTransOffset = 35;
 	
-	  ;% P4p2_integral_P.Frontgain_Gain
+	  ;% P4p2_integral_P.Backgain_Gain
 	  section.data(37).logicalSrcIdx = 113;
 	  section.data(37).dtTransOffset = 36;
 	
-	  ;% P4p2_integral_P.FrontmotorSaturation_UpperSat
+	  ;% P4p2_integral_P.Frontgain_Gain
 	  section.data(38).logicalSrcIdx = 114;
 	  section.data(38).dtTransOffset = 37;
 	
-	  ;% P4p2_integral_P.FrontmotorSaturation_LowerSat
+	  ;% P4p2_integral_P.FrontmotorSaturation_UpperSat
 	  section.data(39).logicalSrcIdx = 115;
 	  section.data(39).dtTransOffset = 38;
 	
-	  ;% P4p2_integral_P.BackmotorSaturation_UpperSat
+	  ;% P4p2_integral_P.FrontmotorSaturation_LowerSat
 	  section.data(40).logicalSrcIdx = 116;
 	  section.data(40).dtTransOffset = 39;
 	
-	  ;% P4p2_integral_P.BackmotorSaturation_LowerSat
+	  ;% P4p2_integral_P.BackmotorSaturation_UpperSat
 	  section.data(41).logicalSrcIdx = 117;
 	  section.data(41).dtTransOffset = 40;
+	
+	  ;% P4p2_integral_P.BackmotorSaturation_LowerSat
+	  section.data(42).logicalSrcIdx = 118;
+	  section.data(42).dtTransOffset = 41;
 	
       nTotData = nTotData + section.nData;
       paramMap.sections(5) = section;
@@ -539,7 +543,7 @@
       section.data(1)  = dumData; %prealloc
       
 	  ;% P4p2_integral_P.GameController_BufferSize
-	  section.data(1).logicalSrcIdx = 118;
+	  section.data(1).logicalSrcIdx = 119;
 	  section.data(1).dtTransOffset = 0;
 	
       nTotData = nTotData + section.nData;
@@ -550,7 +554,7 @@
       section.data(1)  = dumData; %prealloc
       
 	  ;% P4p2_integral_P.GameController_ControllerNumber
-	  section.data(1).logicalSrcIdx = 119;
+	  section.data(1).logicalSrcIdx = 120;
 	  section.data(1).dtTransOffset = 0;
 	
       nTotData = nTotData + section.nData;
@@ -561,19 +565,19 @@
       section.data(4)  = dumData; %prealloc
       
 	  ;% P4p2_integral_P.HILReadEncoderTimebase_Active
-	  section.data(1).logicalSrcIdx = 120;
+	  section.data(1).logicalSrcIdx = 121;
 	  section.data(1).dtTransOffset = 0;
 	
 	  ;% P4p2_integral_P.HILWriteAnalog_Active
-	  section.data(2).logicalSrcIdx = 121;
+	  section.data(2).logicalSrcIdx = 122;
 	  section.data(2).dtTransOffset = 1;
 	
 	  ;% P4p2_integral_P.GameController_AutoCenter
-	  section.data(3).logicalSrcIdx = 122;
+	  section.data(3).logicalSrcIdx = 123;
 	  section.data(3).dtTransOffset = 2;
 	
 	  ;% P4p2_integral_P.GameController_Enabled
-	  section.data(4).logicalSrcIdx = 123;
+	  section.data(4).logicalSrcIdx = 124;
 	  section.data(4).dtTransOffset = 3;
 	
       nTotData = nTotData + section.nData;
@@ -692,7 +696,7 @@
 	  section.data(17).logicalSrcIdx = 16;
 	  section.data(17).dtTransOffset = 26;
 	
-	  ;% P4p2_integral_B.V_s_star
+	  ;% P4p2_integral_B.Sum1_i
 	  section.data(18).logicalSrcIdx = 17;
 	  section.data(18).dtTransOffset = 28;
 	
@@ -991,8 +995,8 @@
   ;%
 
 
-  targMap.checksum0 = 3105443603;
-  targMap.checksum1 = 2708254834;
-  targMap.checksum2 = 127946393;
-  targMap.checksum3 = 3761371194;
+  targMap.checksum0 = 2734372292;
+  targMap.checksum1 = 2863029871;
+  targMap.checksum2 = 3041814475;
+  targMap.checksum3 = 2275479556;
 

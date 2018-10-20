@@ -3,9 +3,9 @@
  *
  * Code generation for model "P4p2_integral".
  *
- * Model version              : 1.89
+ * Model version              : 1.92
  * Simulink Coder version : 8.6 (R2014a) 27-Dec-2013
- * C source code generated on : Wed Oct 17 20:02:13 2018
+ * C source code generated on : Sat Oct 20 02:15:45 2018
  *
  * Target selection: quarc_win64.tlc
  * Note: GRT includes extra infrastructure and instrumentation for prototyping
@@ -813,7 +813,7 @@ typedef struct {
   real_T RateTransitiony;              /* '<S3>/Rate Transition: y' */
   real_T Joystick_gain_y;              /* '<S3>/Joystick_gain_y' */
   real_T Referencefeedforward[2];      /* '<S4>/Reference feed forward ' */
-  real_T V_s_star;                     /* '<S1>/V_s_star' */
+  real_T Sum1_i;                       /* '<S1>/Sum1' */
   real_T FrontmotorSaturation;         /* '<S2>/Front motor: Saturation' */
   real_T BackmotorSaturation;          /* '<S2>/Back motor: Saturation' */
   real_T GameController_o4;            /* '<S3>/Game Controller' */
@@ -1289,6 +1289,9 @@ struct P_P4p2_integral_T_ {
                                         */
   real_T Integrator_IC_p;              /* Expression: 0
                                         * Referenced by: '<S4>/Integrator'
+                                        */
+  real_T V_s_star1_Value;              /* Expression: 1
+                                        * Referenced by: '<S1>/V_s_star1'
                                         */
   real_T Backgain_Gain;                /* Expression: 0.5
                                         * Referenced by: '<S1>/Back gain'

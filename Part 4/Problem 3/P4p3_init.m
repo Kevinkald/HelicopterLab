@@ -3,9 +3,9 @@
 % the course TTK4115. Run this file before you execute QuaRC_ -> Build 
 % to build the file heli_q8.mdl.
 
-% Oppdatert høsten 2006 av Jostein Bakkeheim
-% Oppdatert høsten 2008 av Arnfinn Aas Eielsen
-% Oppdatert høsten 2009 av Jonathan Ronen
+% Oppdatert hï¿½sten 2006 av Jostein Bakkeheim
+% Oppdatert hï¿½sten 2008 av Arnfinn Aas Eielsen
+% Oppdatert hï¿½sten 2009 av Jonathan Ronen
 % Updated fall 2010, Dominik Breu
 % Updated fall 2013, Mark Haring
 % Updated spring 2015, Mark Haring
@@ -31,24 +31,13 @@ v_s_star = 6.5;
 j_p = 2*m_p*(l_p)^2;
 j_e = m_c*(l_c)^2 + 2*m_p*(l_h)^2;
 j_lambda = m_c*(l_c)^2 + 2*m_p*((l_h)^2 + (l_p)^2);
-k1 = (l_p*k_f)/(j_p);
-k2 = ((k_f*l_h)/(j_e));
-k3 = (-k_f*l_h*g*(m_c*l_c - 2*m_p*l_h))/(j_lambda*k_f*l_h);
-
-%%%%%%%%%% Transer functions
-s = tf('s');
-omega0 = 3*pi/4;
-zeta = 1.0;
-k_pp = (omega0^2)/k1;
-k_pd = (2*zeta * omega0)/k1;
-%k_pp =10;
-%k_pd = 2*k_pp/(sqrt(k1*k_pp));
-pitchControler = (k1*k_pp)/(s^2+k1*k_pd*s+k1*k_pp);
-
-%%%%%%%%%%%%%%Problem 2
-
-k_rp = -1;
-offset_travel = -0.081;
+L_1 = l_p * k_f;
+L_2 = g*(m_c*l_c-2*m_p*l_h);
+L_3 = k_f*l_h;
+L_4 = -k_f*l_h;
+k1 = L_1/(j_p);
+k2 = L_3/j_e;
+k3 = -(L_4*L_2)/(j_lambda*L_3);
 
 
 %%%%%%%%%%%%%%%Task 3
@@ -66,16 +55,18 @@ B0 = [0, 0;
 C0 = [1, 0 ,0;
       0, 0, 1];
  
-R = [0.1, 0;%vs
-     0, .5];%vd
+R = [0.01, 0;%vs
+     0, 500];%vd
+ 
+%  R = [0.1, 0;%vs
+%      0, .5];%vd
  
 Q0 = diag([100, 30, 1000]);
 
 K0 = lqr(A0, B0, Q0, R);
 
          %p  &p_r  &e_r gam zeta
-Q = diag([100, 100, 200, 50, 500]);%edot  
-
+Q = diag([0.001, 0.010, 2000, 0.1, 2000]);%edot
  
 A = [A0 ,  zeros(3,2);
     C0,  zeros(2,2)];
@@ -88,7 +79,6 @@ C = [C0, zeros(2,2)];
 K = lqr(A, B, Q, R);
 
 P = inv(C0*inv(B0*K0-A0)*B0);
-%eig(A-B*K)
 
 %%%%%%%PART 4
 
@@ -115,34 +105,9 @@ C_e =  [[1 0 0 0 0 0]
   
 observer = obsv(A_e, C_e);
 rank(observer)
-
-%[b,a] = butter(6, 10);
-% 
-% eig(b)
-
-
-poles = zeros(6,1);
-omegac = 27; %18
-for i = 0:2
-    poles(i+1) = omegac * exp(1j*(i*pi/6+pi/2+pi/12));
-end
-for i = 4:6
-    poles(i) = conj(poles(i-3))
-end
-poles
-plot(real(poles),imag(poles),'*')
-axis([-25,25,-25,25])
-% polynom = poly(poles)
-% zplane([0 0 0 0 0 0], pole(poles))
-
-%pzmap(1/poly(poles))
-
-
-L = place(A_e',C_e',poles)'
-
-    
-A_est = A_e-L*C_e;
-eig(A_est)
+%L = place(A_e',C_e',poles)';
+%A_est = A_e-L*C_e;
+%eig(A_est)
 
 
 
@@ -159,21 +124,39 @@ observer_elambda = obsv(A_e,C_elambda); % Full rank
 
 ovserver_pe = obsv(A_e,C_pe); % Ikke full rank
 
-
-omegac = 27; % 2 for elambda %18
+poles = zeros(6,1);
+omegac = 7; % 2 for elambda %18
 for i = 0:2
-    poles(i+1) = omegac * exp(1j*(i*pi/6+pi/2+pi/12));
+    poles(i+1) = omegac * exp(1j*(i*2*pi/15+pi/2+pi/8));
 end
 for i = 4:6
-    poles(i) = conj(poles(i-3))
+    poles(i) = conj(poles(i-3));
 end
 poles
 
+%%% Ploting poles
+plot(real(poles),imag(poles),'r*');
+hold on;
 
-%L = place(A_e',C_elambda',poles)'
-%A_est = A_e-L*C_elambda;
 
-L = place(A_e',C_pe',poles)'
-A_est = A_e-L*C_pe;
-    
-    
+%%Plot circle
+n = 256;
+dPhi = 2*pi/n;
+phi = (-pi:dPhi:pi-dPhi);
+z = omegac*exp(1j*phi);
+C = [ real(z) ; imag(z) ];
+plot(z);
+
+%plot axis
+line([0 0], [-omegac-10 omegac+10],'color','k','linewidth',0.5) %y-axis
+line([-omegac-10 omegac+10], [0 0],'color','k','linewidth',0.5) %x-axis 
+
+legend(strcat('Eigenvalues of (A-LC) with \sigma =', num2str(omegac)));
+xlabel('Re');
+ylabel('Im');
+grid on;
+axis([-omegac-5,omegac+5,-omegac-5,omegac+5])
+
+
+L = place(A_e',C_elambda',poles)';
+A_est = A_e-L*C_elambda;

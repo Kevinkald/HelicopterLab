@@ -31,9 +31,13 @@ v_s_star = 6.5;
 j_p = 2*m_p*(l_p)^2;
 j_e = m_c*(l_c)^2 + 2*m_p*(l_h)^2;
 j_lambda = m_c*(l_c)^2 + 2*m_p*((l_h)^2 + (l_p)^2);
-k1 = (l_p*k_f)/(j_p);
-k2 = ((k_f*l_h)/(j_e));
-k3 = (-k_f*l_h*g*(m_c*l_c - 2*m_p*l_h))/(j_lambda*k_f*l_h);
+L_1 = l_p * k_f;
+L_2 = g*(m_c*l_c-2*m_p*l_h);
+L_3 = k_f*l_h;
+L_4 = -k_f*l_h;
+k1 = L_1/(j_p);
+k2 = L_3/j_e;
+k3 = -(L_4*L_2)/(j_lambda*L_3);
 
 %%%%%%%%%% Transer functions
 s = tf('s');

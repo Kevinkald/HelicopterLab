@@ -3,9 +3,9 @@
 % the course TTK4115. Run this file before you execute QuaRC_ -> Build 
 % to build the file heli_q8.mdl.
 
-% Oppdatert høsten 2006 av Jostein Bakkeheim
-% Oppdatert høsten 2008 av Arnfinn Aas Eielsen
-% Oppdatert høsten 2009 av Jonathan Ronen
+% Oppdatert hï¿½sten 2006 av Jostein Bakkeheim
+% Oppdatert hï¿½sten 2008 av Arnfinn Aas Eielsen
+% Oppdatert hï¿½sten 2009 av Jonathan Ronen
 % Updated fall 2010, Dominik Breu
 % Updated fall 2013, Mark Haring
 % Updated spring 2015, Mark Haring
@@ -31,29 +31,18 @@ v_s_star = 6.5;
 j_p = 2*m_p*(l_p)^2;
 j_e = m_c*(l_c)^2 + 2*m_p*(l_h)^2;
 j_lambda = m_c*(l_c)^2 + 2*m_p*((l_h)^2 + (l_p)^2);
-k1 = (l_p*k_f)/(j_p);
-k2 = ((k_f*l_h)/(j_e));
-k3 = (-k_f*l_h*g*(m_c*l_c - 2*m_p*l_h))/(j_lambda*k_f*l_h);
-
-%%%%%%%%%% Transer functions
-s = tf('s');
-omega0 = 3*pi/4;
-zeta = 1.0;
-k_pp = (omega0^2)/k1;
-k_pd = (2*zeta * omega0)/k1;
-%k_pp =10;
-%k_pd = 2*k_pp/(sqrt(k1*k_pp));
-pitchControler = (k1*k_pp)/(s^2+k1*k_pd*s+k1*k_pp);
-
-%%%%%%%%%%%%%%Problem 2
-
-k_rp = -1;
-offset_travel = -0.081;
+L_1 = l_p * k_f;
+L_2 = g*(m_c*l_c-2*m_p*l_h);
+L_3 = k_f*l_h;
+L_4 = -k_f*l_h;
+k1 = L_1/(j_p);
+k2 = L_3/j_e;
+k3 = -(L_4*L_2)/(j_lambda*L_3);
 
 
 %%%%%%%%%%%%%%%Task 3
 
-%%%%%%%%%%%%%%% Problem 1
+%%%%%%%%%%%%%%% Problem 2
 
 A = [0, 1, 0; 
      0, 0, 0; 
@@ -77,7 +66,6 @@ Q = [100, 0, 0;%p
   
 
 K= lqr(A, B, Q, R);
-D = 0;
 P = inv(C*inv(B*K-A)*B);
 
 

@@ -1,0 +1,2 @@
+#include <winuser.rh>
+1 RT_MANIFEST "P3p3.auto.manifest"

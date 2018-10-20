@@ -3,9 +3,9 @@
  *
  * Code generation for model "P4p2_integral".
  *
- * Model version              : 1.89
+ * Model version              : 1.92
  * Simulink Coder version : 8.6 (R2014a) 27-Dec-2013
- * C source code generated on : Wed Oct 17 20:02:13 2018
+ * C source code generated on : Sat Oct 20 02:15:45 2018
  *
  * Target selection: quarc_win64.tlc
  * Note: GRT includes extra infrastructure and instrumentation for prototyping
@@ -315,7 +315,7 @@ void P4p2_integral_output0(void)       /* Sample time: [0.0s, 0.0s] */
             u[12] = rtb_TmpSignalConversionAtToFile[11];
             if (fwrite(u, sizeof(real_T), 13, fp) != 13) {
               rtmSetErrorStatus(P4p2_integral_M,
-                                "Error writing to MAT-file FILENAME.mat");
+                                "Error writing to MAT-file estimators_finished_2.mat");
               return;
             }
 
@@ -324,7 +324,7 @@ void P4p2_integral_output0(void)       /* Sample time: [0.0s, 0.0s] */
                             "*** The ToFile block will stop logging data before\n"
                             "    the simulation has ended, because it has reached\n"
                             "    the maximum number of elements (100000000)\n"
-                            "    allowed in MAT-file FILENAME.mat.\n");
+                            "    allowed in MAT-file estimators_finished_2.mat.\n");
             }
           }
         }
@@ -451,12 +451,16 @@ void P4p2_integral_output0(void)       /* Sample time: [0.0s, 0.0s] */
 
   /* End of Sum: '<S4>/Sum3' */
   if (rtmIsMajorTimeStep(P4p2_integral_M)) {
-    /* Constant: '<S1>/V_s_star' */
-    P4p2_integral_B.V_s_star = P4p2_integral_P.v_s_star;
+    /* Sum: '<S1>/Sum1' incorporates:
+     *  Constant: '<S1>/V_s_star'
+     *  Constant: '<S1>/V_s_star1'
+     */
+    P4p2_integral_B.Sum1_i = P4p2_integral_P.v_s_star +
+      P4p2_integral_P.V_s_star1_Value;
   }
 
   /* Sum: '<S1>/Sum' */
-  rtb_Frontgain = rtb_u[0] + P4p2_integral_B.V_s_star;
+  rtb_Frontgain = rtb_u[0] + P4p2_integral_B.Sum1_i;
   if (rtmIsMajorTimeStep(P4p2_integral_M)) {
   }
 
@@ -1107,16 +1111,17 @@ void P4p2_integral_initialize(void)
 
   /* Start for ToFile: '<S5>/To File' */
   {
-    char fileName[509] = "FILENAME.mat";
+    char fileName[509] = "estimators_finished_2.mat";
     FILE *fp = (NULL);
     if ((fp = fopen(fileName, "wb")) == (NULL)) {
-      rtmSetErrorStatus(P4p2_integral_M, "Error creating .mat file FILENAME.mat");
+      rtmSetErrorStatus(P4p2_integral_M,
+                        "Error creating .mat file estimators_finished_2.mat");
       return;
     }
 
     if (rt_WriteMat4FileHeader(fp,13,0,"ans")) {
       rtmSetErrorStatus(P4p2_integral_M,
-                        "Error writing mat file header to file FILENAME.mat");
+                        "Error writing mat file header to file estimators_finished_2.mat");
       return;
     }
 
@@ -1295,26 +1300,28 @@ void P4p2_integral_terminate(void)
   {
     FILE *fp = (FILE *) P4p2_integral_DW.ToFile_PWORK.FilePtr;
     if (fp != (NULL)) {
-      char fileName[509] = "FILENAME.mat";
+      char fileName[509] = "estimators_finished_2.mat";
       if (fclose(fp) == EOF) {
-        rtmSetErrorStatus(P4p2_integral_M, "Error closing MAT-file FILENAME.mat");
+        rtmSetErrorStatus(P4p2_integral_M,
+                          "Error closing MAT-file estimators_finished_2.mat");
         return;
       }
 
       if ((fp = fopen(fileName, "r+b")) == (NULL)) {
         rtmSetErrorStatus(P4p2_integral_M,
-                          "Error reopening MAT-file FILENAME.mat");
+                          "Error reopening MAT-file estimators_finished_2.mat");
         return;
       }
 
       if (rt_WriteMat4FileHeader(fp, 13, P4p2_integral_DW.ToFile_IWORK.Count,
            "ans")) {
         rtmSetErrorStatus(P4p2_integral_M,
-                          "Error writing header for ans to MAT-file FILENAME.mat");
+                          "Error writing header for ans to MAT-file estimators_finished_2.mat");
       }
 
       if (fclose(fp) == EOF) {
-        rtmSetErrorStatus(P4p2_integral_M, "Error closing MAT-file FILENAME.mat");
+        rtmSetErrorStatus(P4p2_integral_M,
+                          "Error closing MAT-file estimators_finished_2.mat");
         return;
       }
 
@@ -1472,10 +1479,10 @@ RT_MODEL_P4p2_integral_T *P4p2_integral(void)
   P4p2_integral_M->Timing.stepSize2 = 0.01;
 
   /* External mode info */
-  P4p2_integral_M->Sizes.checksums[0] = (3105443603U);
-  P4p2_integral_M->Sizes.checksums[1] = (2708254834U);
-  P4p2_integral_M->Sizes.checksums[2] = (127946393U);
-  P4p2_integral_M->Sizes.checksums[3] = (3761371194U);
+  P4p2_integral_M->Sizes.checksums[0] = (2734372292U);
+  P4p2_integral_M->Sizes.checksums[1] = (2863029871U);
+  P4p2_integral_M->Sizes.checksums[2] = (3041814475U);
+  P4p2_integral_M->Sizes.checksums[3] = (2275479556U);
 
   {
     static const sysRanDType rtAlwaysEnabled = SUBSYS_RAN_BC_ENABLE;
@@ -1529,7 +1536,7 @@ RT_MODEL_P4p2_integral_T *P4p2_integral(void)
     P4p2_integral_B.Joystick_gain_y = 0.0;
     P4p2_integral_B.Referencefeedforward[0] = 0.0;
     P4p2_integral_B.Referencefeedforward[1] = 0.0;
-    P4p2_integral_B.V_s_star = 0.0;
+    P4p2_integral_B.Sum1_i = 0.0;
     P4p2_integral_B.FrontmotorSaturation = 0.0;
     P4p2_integral_B.BackmotorSaturation = 0.0;
     P4p2_integral_B.GameController_o4 = 0.0;
@@ -1638,9 +1645,9 @@ RT_MODEL_P4p2_integral_T *P4p2_integral(void)
   P4p2_integral_M->Sizes.numU = (0);   /* Number of model inputs */
   P4p2_integral_M->Sizes.sysDirFeedThru = (0);/* The model is not direct feedthrough */
   P4p2_integral_M->Sizes.numSampTimes = (3);/* Number of sample times */
-  P4p2_integral_M->Sizes.numBlocks = (68);/* Number of blocks */
+  P4p2_integral_M->Sizes.numBlocks = (70);/* Number of blocks */
   P4p2_integral_M->Sizes.numBlockIO = (25);/* Number of block outputs */
-  P4p2_integral_M->Sizes.numBlockPrms = (249);/* Sum of parameter "widths" */
+  P4p2_integral_M->Sizes.numBlockPrms = (250);/* Sum of parameter "widths" */
   return P4p2_integral_M;
 }
 

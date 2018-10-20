@@ -3,9 +3,9 @@
  *
  * Code generation for model "P4p2_integral".
  *
- * Model version              : 1.89
+ * Model version              : 1.92
  * Simulink Coder version : 8.6 (R2014a) 27-Dec-2013
- * C source code generated on : Wed Oct 17 20:02:13 2018
+ * C source code generated on : Sat Oct 20 02:15:45 2018
  *
  * Target selection: quarc_win64.tlc
  * Note: GRT includes extra infrastructure and instrumentation for prototyping
@@ -96,7 +96,7 @@ static DataTypeTransition rtPTransitions[] = {
 
   { (char_T *)(&P4p2_integral_P.HILInitialize_active), 8, 0, 35 },
 
-  { (char_T *)(&P4p2_integral_P.PitchCounttorad_Gain), 0, 0, 41 },
+  { (char_T *)(&P4p2_integral_P.PitchCounttorad_Gain), 0, 0, 42 },
 
   { (char_T *)(&P4p2_integral_P.GameController_BufferSize), 5, 0, 1 },
 

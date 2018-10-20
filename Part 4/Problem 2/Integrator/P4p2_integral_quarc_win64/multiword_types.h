@@ -3,9 +3,9 @@
  *
  * Code generation for model "P4p2_integral".
  *
- * Model version              : 1.89
+ * Model version              : 1.92
  * Simulink Coder version : 8.6 (R2014a) 27-Dec-2013
- * C source code generated on : Wed Oct 17 20:02:13 2018
+ * C source code generated on : Sat Oct 20 02:15:45 2018
  *
  * Target selection: quarc_win64.tlc
  * Note: GRT includes extra infrastructure and instrumentation for prototyping
