@@ -3,9 +3,9 @@
  *
  * Code generation for model "P3p3".
  *
- * Model version              : 1.88
+ * Model version              : 1.90
  * Simulink Coder version : 8.6 (R2014a) 27-Dec-2013
- * C source code generated on : Fri Oct 19 23:22:47 2018
+ * C source code generated on : Sun Oct 21 19:37:04 2018
  *
  * Target selection: quarc_win64.tlc
  * Note: GRT includes extra infrastructure and instrumentation for prototyping
@@ -356,6 +356,9 @@ P_P3p3_T P3p3_P = {
                                         */
   0.0,                                 /* Expression: 0
                                         * Referenced by: '<S5>/Integrator'
+                                        */
+  0.0,                                 /* Expression: 0
+                                        * Referenced by: '<S1>/v_s_+'
                                         */
   0.5,                                 /* Expression: 0.5
                                         * Referenced by: '<S1>/Back gain'

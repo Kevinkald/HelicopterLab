@@ -5,7 +5,7 @@
  *
  * Model version              : 1.69
  * Simulink Coder version : 8.6 (R2014a) 27-Dec-2013
- * C source code generated on : Sat Oct 20 02:20:10 2018
+ * C source code generated on : Sun Oct 21 19:26:21 2018
  *
  * Target selection: quarc_win64.tlc
  * Note: GRT includes extra infrastructure and instrumentation for prototyping
@@ -810,6 +810,7 @@ typedef struct {
   real_T p_rad;                        /* '<Root>/p_*[rad]' */
   real_T e_rad;                        /* '<Root>/e_*[rad]' */
   real_T e__crads;                     /* '<Root>/e_~_c[rad//s]' */
+  real_T Constant;                     /* '<S1>/Constant' */
   real_T K_ei;                         /* '<S7>/K_ei' */
   real_T FrontmotorSaturation;         /* '<S3>/Front motor: Saturation' */
   real_T BackmotorSaturation;          /* '<S3>/Back motor: Saturation' */
@@ -946,6 +947,9 @@ struct P_P2p2_T_ {
                                         */
   real_T k_rp;                         /* Variable: k_rp
                                         * Referenced by: '<S6>/k_rp'
+                                        */
+  real_T v_s_star;                     /* Variable: v_s_star
+                                        * Referenced by: '<S1>/Constant'
                                         */
   real_T HILInitialize_analog_input_maxi;/* Mask Parameter: HILInitialize_analog_input_maxi
                                           * Referenced by: '<Root>/HIL Initialize'

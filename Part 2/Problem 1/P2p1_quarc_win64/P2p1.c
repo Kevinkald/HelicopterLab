@@ -3,9 +3,9 @@
  *
  * Code generation for model "P2p1".
  *
- * Model version              : 1.69
+ * Model version              : 1.73
  * Simulink Coder version : 8.6 (R2014a) 27-Dec-2013
- * C source code generated on : Sat Oct 20 02:18:56 2018
+ * C source code generated on : Sun Oct 21 19:24:03 2018
  *
  * Target selection: quarc_win64.tlc
  * Note: GRT includes extra infrastructure and instrumentation for prototyping
@@ -155,7 +155,7 @@ void P2p1_output0(void)                /* Sample time: [0.0s, 0.0s] */
     }
 
     /* Constant: '<Root>/e_~_c [rad//s]' */
-    P2p1_B.e__crads = P2p1_P.e__crads_Value;
+    P2p1_B.Elevationratereference = P2p1_P.e__crads_Value;
 
     /* Gain: '<S3>/Travel: Count to rad' */
     P2p1_B.TravelCounttorad = P2p1_P.TravelCounttorad_Gain *
@@ -224,15 +224,15 @@ void P2p1_output0(void)                /* Sample time: [0.0s, 0.0s] */
   /* Sum: '<Root>/Sum' incorporates:
    *  Gain: '<Root>/Deg to rad'
    */
-  P2p1_B.Sum_o = P2p1_P.Degtorad_Gain * P2p1_B.Sum2 - P2p1_B.e_rad;
+  P2p1_B.Elevationrate = P2p1_P.Degtorad_Gain * P2p1_B.Sum2 - P2p1_B.e_rad;
   if (rtmIsMajorTimeStep(P2p1_M)) {
   }
 
   /* Step: '<Root>/Step' */
   if (P2p1_M->Timing.t[0] < P2p1_P.Step_Time) {
-    P2p1_B.Step = P2p1_P.Step_Y0;
+    P2p1_B.Pitchreference = P2p1_P.Step_Y0;
   } else {
-    P2p1_B.Step = P2p1_P.Step_YFinal;
+    P2p1_B.Pitchreference = P2p1_P.Step_YFinal;
   }
 
   /* End of Step: '<Root>/Step' */
@@ -244,7 +244,7 @@ void P2p1_output0(void)                /* Sample time: [0.0s, 0.0s] */
   /* Sum: '<Root>/Sum1' incorporates:
    *  Gain: '<Root>/Deg to rad'
    */
-  P2p1_B.Sum1_p = P2p1_P.Degtorad_Gain * P2p1_B.Gain_i - P2p1_B.p_1rad;
+  P2p1_B.Pitch = P2p1_P.Degtorad_Gain * P2p1_B.Gain_i - P2p1_B.p_1rad;
   if (rtmIsMajorTimeStep(P2p1_M)) {
   }
 
@@ -254,7 +254,7 @@ void P2p1_output0(void)                /* Sample time: [0.0s, 0.0s] */
    *  Gain: '<S5>/K_pp'
    *  Sum: '<S5>/Sum'
    */
-  rtb_Frontgain = (P2p1_B.Step - P2p1_B.Sum1_p) * P2p1_P.k_pp -
+  rtb_Frontgain = (P2p1_B.Pitchreference - P2p1_B.Pitch) * P2p1_P.k_pp -
     P2p1_P.Degtorad_Gain * P2p1_B.Sum1 * P2p1_P.k_pd;
 
   /* Integrator: '<S6>/Integrator'
@@ -271,14 +271,19 @@ void P2p1_output0(void)                /* Sample time: [0.0s, 0.0s] */
   rtb_Backgain = P2p1_X.Integrator_CSTATE;
 
   /* Sum: '<S2>/Sum' */
-  rtb_Sum_p = P2p1_B.e__crads - P2p1_B.Sum_o;
+  rtb_Sum_p = P2p1_B.Elevationratereference - P2p1_B.Elevationrate;
+  if (rtmIsMajorTimeStep(P2p1_M)) {
+    /* Constant: '<S1>/Constant' */
+    P2p1_B.Constant = P2p1_P.v_s_star;
+  }
 
-  /* Sum: '<S6>/Sum' incorporates:
+  /* Sum: '<S1>/Sum' incorporates:
    *  Gain: '<S6>/K_ed'
    *  Gain: '<S6>/K_ep'
+   *  Sum: '<S6>/Sum'
    */
-  rtb_Backgain = (P2p1_P.K_ep_Gain * rtb_Sum_p + rtb_Backgain) -
-    P2p1_P.K_ed_Gain * rtb_Degtorad_idx_5;
+  rtb_Backgain = ((P2p1_P.K_ep_Gain * rtb_Sum_p + rtb_Backgain) -
+                  P2p1_P.K_ed_Gain * rtb_Degtorad_idx_5) + P2p1_B.Constant;
 
   /* Sum: '<S1>/Add' */
   rtb_Degtorad_idx_5 = rtb_Frontgain + rtb_Backgain;
@@ -1212,10 +1217,10 @@ RT_MODEL_P2p1_T *P2p1(void)
   P2p1_M->Timing.stepSize2 = 0.01;
 
   /* External mode info */
-  P2p1_M->Sizes.checksums[0] = (1690279344U);
-  P2p1_M->Sizes.checksums[1] = (4146788531U);
-  P2p1_M->Sizes.checksums[2] = (1702725198U);
-  P2p1_M->Sizes.checksums[3] = (3578821623U);
+  P2p1_M->Sizes.checksums[0] = (3571071013U);
+  P2p1_M->Sizes.checksums[1] = (1172888010U);
+  P2p1_M->Sizes.checksums[2] = (2254224467U);
+  P2p1_M->Sizes.checksums[3] = (1967765320U);
 
   {
     static const sysRanDType rtAlwaysEnabled = SUBSYS_RAN_BC_ENABLE;
@@ -1239,7 +1244,7 @@ RT_MODEL_P2p1_T *P2p1(void)
   P2p1_M->ModelData.blockIO = ((void *) &P2p1_B);
 
   {
-    P2p1_B.e__crads = 0.0;
+    P2p1_B.Elevationratereference = 0.0;
     P2p1_B.TravelCounttorad = 0.0;
     P2p1_B.Sum = 0.0;
     P2p1_B.Gain = 0.0;
@@ -1251,10 +1256,11 @@ RT_MODEL_P2p1_T *P2p1(void)
     P2p1_B.Sum2 = 0.0;
     P2p1_B.Gain_d = 0.0;
     P2p1_B.e_rad = 0.0;
-    P2p1_B.Sum_o = 0.0;
-    P2p1_B.Step = 0.0;
+    P2p1_B.Elevationrate = 0.0;
+    P2p1_B.Pitchreference = 0.0;
     P2p1_B.p_1rad = 0.0;
-    P2p1_B.Sum1_p = 0.0;
+    P2p1_B.Pitch = 0.0;
+    P2p1_B.Constant = 0.0;
     P2p1_B.K_ei = 0.0;
     P2p1_B.FrontmotorSaturation = 0.0;
     P2p1_B.BackmotorSaturation = 0.0;
@@ -1366,9 +1372,9 @@ RT_MODEL_P2p1_T *P2p1(void)
   P2p1_M->Sizes.numU = (0);            /* Number of model inputs */
   P2p1_M->Sizes.sysDirFeedThru = (0);  /* The model is not direct feedthrough */
   P2p1_M->Sizes.numSampTimes = (3);    /* Number of sample times */
-  P2p1_M->Sizes.numBlocks = (63);      /* Number of blocks */
-  P2p1_M->Sizes.numBlockIO = (25);     /* Number of block outputs */
-  P2p1_M->Sizes.numBlockPrms = (159);  /* Sum of parameter "widths" */
+  P2p1_M->Sizes.numBlocks = (65);      /* Number of blocks */
+  P2p1_M->Sizes.numBlockIO = (26);     /* Number of block outputs */
+  P2p1_M->Sizes.numBlockPrms = (160);  /* Sum of parameter "widths" */
   return P2p1_M;
 }
 

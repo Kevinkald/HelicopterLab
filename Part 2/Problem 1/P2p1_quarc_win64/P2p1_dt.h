@@ -3,9 +3,9 @@
  *
  * Code generation for model "P2p1".
  *
- * Model version              : 1.69
+ * Model version              : 1.73
  * Simulink Coder version : 8.6 (R2014a) 27-Dec-2013
- * C source code generated on : Sat Oct 20 02:18:56 2018
+ * C source code generated on : Sun Oct 21 19:24:03 2018
  *
  * Target selection: quarc_win64.tlc
  * Note: GRT includes extra infrastructure and instrumentation for prototyping
@@ -60,7 +60,7 @@ static const char_T * rtDataTypeNames[] = {
 
 /* data type transitions for block I/O structure */
 static DataTypeTransition rtBTransitions[] = {
-  { (char_T *)(&P2p1_B.e__crads), 0, 0, 25 }
+  { (char_T *)(&P2p1_B.Elevationratereference), 0, 0, 26 }
   ,
 
   { (char_T *)(&P2p1_DW.HILInitialize_AIMinimums[0]), 0, 0, 68 },
@@ -86,7 +86,7 @@ static DataTypeTransitionTable rtBTransTable = {
 
 /* data type transitions for Parameters structure */
 static DataTypeTransition rtPTransitions[] = {
-  { (char_T *)(&P2p1_P.Joystick_gain_x), 0, 0, 21 },
+  { (char_T *)(&P2p1_P.Joystick_gain_x), 0, 0, 22 },
 
   { (char_T *)(&P2p1_P.HILReadEncoderTimebase_clock), 6, 0, 10 },
 

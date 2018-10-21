@@ -3,9 +3,9 @@
  *
  * Code generation for model "P3p3".
  *
- * Model version              : 1.88
+ * Model version              : 1.90
  * Simulink Coder version : 8.6 (R2014a) 27-Dec-2013
- * C source code generated on : Fri Oct 19 23:22:47 2018
+ * C source code generated on : Sun Oct 21 19:37:04 2018
  *
  * Target selection: quarc_win64.tlc
  * Note: GRT includes extra infrastructure and instrumentation for prototyping
@@ -110,6 +110,7 @@ void P3p3_output0(void)                /* Sample time: [0.0s, 0.0s] */
   real_T rtb_HILReadEncoderTimebase_o1;
   real_T rtb_HILReadEncoderTimebase_o2;
   real_T rtb_HILReadEncoderTimebase_o3;
+  real_T rtb_Frontgain;
   real_T rtb_u[2];
   real_T rtb_Degtorad_0[5];
   int32_T i;
@@ -166,11 +167,11 @@ void P3p3_output0(void)                /* Sample time: [0.0s, 0.0s] */
 
     /* DeadZone: '<S4>/Dead Zone: x' */
     if (P3p3_B.RateTransitionx > P3p3_P.DeadZonex_End) {
-      u0 = P3p3_B.RateTransitionx - P3p3_P.DeadZonex_End;
+      rtb_Frontgain = P3p3_B.RateTransitionx - P3p3_P.DeadZonex_End;
     } else if (P3p3_B.RateTransitionx >= P3p3_P.DeadZonex_Start) {
-      u0 = 0.0;
+      rtb_Frontgain = 0.0;
     } else {
-      u0 = P3p3_B.RateTransitionx - P3p3_P.DeadZonex_Start;
+      rtb_Frontgain = P3p3_B.RateTransitionx - P3p3_P.DeadZonex_Start;
     }
 
     /* End of DeadZone: '<S4>/Dead Zone: x' */
@@ -178,7 +179,8 @@ void P3p3_output0(void)                /* Sample time: [0.0s, 0.0s] */
     /* Gain: '<S4>/Joystick_gain_x' incorporates:
      *  Gain: '<S4>/Gain: x'
      */
-    P3p3_B.Joystick_gain_x = P3p3_P.Gainx_Gain * u0 * P3p3_P.Joystick_gain_x;
+    P3p3_B.Joystick_gain_x = P3p3_P.Gainx_Gain * rtb_Frontgain *
+      P3p3_P.Joystick_gain_x;
 
     /* Gain: '<S3>/Travel: Count to rad' */
     P3p3_B.TravelCounttorad = P3p3_P.TravelCounttorad_Gain *
@@ -254,11 +256,11 @@ void P3p3_output0(void)                /* Sample time: [0.0s, 0.0s] */
 
     /* DeadZone: '<S4>/Dead Zone: y' */
     if (P3p3_B.RateTransitiony > P3p3_P.DeadZoney_End) {
-      u0 = P3p3_B.RateTransitiony - P3p3_P.DeadZoney_End;
+      rtb_Frontgain = P3p3_B.RateTransitiony - P3p3_P.DeadZoney_End;
     } else if (P3p3_B.RateTransitiony >= P3p3_P.DeadZoney_Start) {
-      u0 = 0.0;
+      rtb_Frontgain = 0.0;
     } else {
-      u0 = P3p3_B.RateTransitiony - P3p3_P.DeadZoney_Start;
+      rtb_Frontgain = P3p3_B.RateTransitiony - P3p3_P.DeadZoney_Start;
     }
 
     /* End of DeadZone: '<S4>/Dead Zone: y' */
@@ -266,7 +268,8 @@ void P3p3_output0(void)                /* Sample time: [0.0s, 0.0s] */
     /* Gain: '<S4>/Joystick_gain_y' incorporates:
      *  Gain: '<S4>/Gain: y'
      */
-    P3p3_B.Joystick_gain_y = P3p3_P.Gainy_Gain * u0 * P3p3_P.Joystick_gain_y;
+    P3p3_B.Joystick_gain_y = P3p3_P.Gainy_Gain * rtb_Frontgain *
+      P3p3_P.Joystick_gain_y;
   }
 
   /* End of RateTransition: '<S4>/Rate Transition: y' */
@@ -302,22 +305,29 @@ void P3p3_output0(void)                /* Sample time: [0.0s, 0.0s] */
    *  Gain: '<S5>/State feedback'
    */
   for (i = 0; i < 2; i++) {
-    u0 = 0.0;
+    rtb_Frontgain = 0.0;
     for (i_0 = 0; i_0 < 5; i_0++) {
-      u0 += P3p3_P.K[(i_0 << 1) + i] * rtb_Degtorad_0[i_0];
+      rtb_Frontgain += P3p3_P.K[(i_0 << 1) + i] * rtb_Degtorad_0[i_0];
     }
 
-    rtb_u[i] = P3p3_B.Referencefeedforward[i] - u0;
+    rtb_u[i] = P3p3_B.Referencefeedforward[i] - rtb_Frontgain;
   }
 
   /* End of Sum: '<S5>/Sum3' */
+  if (rtmIsMajorTimeStep(P3p3_M)) {
+    /* Constant: '<S1>/v_s_+' */
+    P3p3_B.v_s_ = P3p3_P.v_s__Value;
+  }
+
+  /* Sum: '<S1>/Sum' */
+  rtb_Frontgain = rtb_u[0] + P3p3_B.v_s_;
   if (rtmIsMajorTimeStep(P3p3_M)) {
   }
 
   /* Gain: '<S1>/Front gain' incorporates:
    *  Sum: '<S1>/Add'
    */
-  u0 = (rtb_u[1] + 0.0) * P3p3_P.Frontgain_Gain;
+  u0 = (rtb_u[1] + rtb_Frontgain) * P3p3_P.Frontgain_Gain;
 
   /* Saturate: '<S3>/Front motor: Saturation' */
   if (u0 > P3p3_P.FrontmotorSaturation_UpperSat) {
@@ -333,7 +343,7 @@ void P3p3_output0(void)                /* Sample time: [0.0s, 0.0s] */
   /* Gain: '<S1>/Back gain' incorporates:
    *  Sum: '<S1>/Subtract'
    */
-  u0 = (rtb_u[0] - rtb_u[1]) * P3p3_P.Backgain_Gain;
+  u0 = (rtb_Frontgain - rtb_u[1]) * P3p3_P.Backgain_Gain;
 
   /* Saturate: '<S3>/Back motor: Saturation' */
   if (u0 > P3p3_P.BackmotorSaturation_UpperSat) {
@@ -1186,10 +1196,10 @@ RT_MODEL_P3p3_T *P3p3(void)
   P3p3_M->Timing.stepSize2 = 0.01;
 
   /* External mode info */
-  P3p3_M->Sizes.checksums[0] = (1285318926U);
-  P3p3_M->Sizes.checksums[1] = (1465956639U);
-  P3p3_M->Sizes.checksums[2] = (2195481403U);
-  P3p3_M->Sizes.checksums[3] = (2194583973U);
+  P3p3_M->Sizes.checksums[0] = (1248258U);
+  P3p3_M->Sizes.checksums[1] = (1291459350U);
+  P3p3_M->Sizes.checksums[2] = (3326849272U);
+  P3p3_M->Sizes.checksums[3] = (2646164146U);
 
   {
     static const sysRanDType rtAlwaysEnabled = SUBSYS_RAN_BC_ENABLE;
@@ -1233,6 +1243,7 @@ RT_MODEL_P3p3_T *P3p3(void)
     P3p3_B.Elevationrate[1] = 0.0;
     P3p3_B.Referencefeedforward[0] = 0.0;
     P3p3_B.Referencefeedforward[1] = 0.0;
+    P3p3_B.v_s_ = 0.0;
     P3p3_B.FrontmotorSaturation = 0.0;
     P3p3_B.BackmotorSaturation = 0.0;
     P3p3_B.GameController_o4 = 0.0;
@@ -1341,9 +1352,9 @@ RT_MODEL_P3p3_T *P3p3(void)
   P3p3_M->Sizes.numU = (0);            /* Number of model inputs */
   P3p3_M->Sizes.sysDirFeedThru = (0);  /* The model is not direct feedthrough */
   P3p3_M->Sizes.numSampTimes = (3);    /* Number of sample times */
-  P3p3_M->Sizes.numBlocks = (57);      /* Number of blocks */
-  P3p3_M->Sizes.numBlockIO = (23);     /* Number of block outputs */
-  P3p3_M->Sizes.numBlockPrms = (163);  /* Sum of parameter "widths" */
+  P3p3_M->Sizes.numBlocks = (59);      /* Number of blocks */
+  P3p3_M->Sizes.numBlockIO = (24);     /* Number of block outputs */
+  P3p3_M->Sizes.numBlockPrms = (164);  /* Sum of parameter "widths" */
   return P3p3_M;
 }
 

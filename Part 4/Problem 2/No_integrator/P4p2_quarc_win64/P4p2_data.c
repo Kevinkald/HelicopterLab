@@ -3,9 +3,9 @@
  *
  * Code generation for model "P4p2".
  *
- * Model version              : 1.87
+ * Model version              : 1.89
  * Simulink Coder version : 8.6 (R2014a) 27-Dec-2013
- * C source code generated on : Wed Oct 17 20:04:36 2018
+ * C source code generated on : Sun Oct 21 19:41:43 2018
  *
  * Target selection: quarc_win64.tlc
  * Note: GRT includes extra infrastructure and instrumentation for prototyping
@@ -56,7 +56,7 @@ P_P4p2_T P4p2_P = {
    * Referenced by: '<S6>/L'
    */
   { 23.141570468920605, 220.06607992645434, -12.183217515260287,
-    -258.12395652271363, -11.635435261915719, -308.07355118208005,
+    -258.12395652271363, -11.635435261915719, -309.29702923960593,
     11.51379423686091, 300.76701283704153, 25.3306724803644, 282.93192802460709,
     -2.3010190286044061, -110.2079001171478, 4.564749939148955,
     117.95970207169503, -0.83378476924104117, -103.92828198348479,

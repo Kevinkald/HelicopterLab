@@ -3,9 +3,9 @@
  *
  * Code generation for model "P3p3".
  *
- * Model version              : 1.88
+ * Model version              : 1.90
  * Simulink Coder version : 8.6 (R2014a) 27-Dec-2013
- * C source code generated on : Fri Oct 19 23:22:47 2018
+ * C source code generated on : Sun Oct 21 19:37:04 2018
  *
  * Target selection: quarc_win64.tlc
  * Note: GRT includes extra infrastructure and instrumentation for prototyping
@@ -60,7 +60,7 @@ static const char_T * rtDataTypeNames[] = {
 
 /* data type transitions for block I/O structure */
 static DataTypeTransition rtBTransitions[] = {
-  { (char_T *)(&P3p3_B.RateTransitionx), 0, 0, 26 }
+  { (char_T *)(&P3p3_B.RateTransitionx), 0, 0, 27 }
   ,
 
   { (char_T *)(&P3p3_DW.HILInitialize_AIMinimums[0]), 0, 0, 68 },
@@ -94,7 +94,7 @@ static DataTypeTransition rtPTransitions[] = {
 
   { (char_T *)(&P3p3_P.HILInitialize_active), 8, 0, 35 },
 
-  { (char_T *)(&P3p3_P.RateTransitionx_X0), 0, 0, 40 },
+  { (char_T *)(&P3p3_P.RateTransitionx_X0), 0, 0, 41 },
 
   { (char_T *)(&P3p3_P.GameController_BufferSize), 5, 0, 1 },
 

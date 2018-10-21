@@ -3,9 +3,9 @@
  *
  * Code generation for model "P2p1".
  *
- * Model version              : 1.69
+ * Model version              : 1.73
  * Simulink Coder version : 8.6 (R2014a) 27-Dec-2013
- * C source code generated on : Sat Oct 20 02:18:56 2018
+ * C source code generated on : Sun Oct 21 19:24:03 2018
  *
  * Target selection: quarc_win64.tlc
  * Note: GRT includes extra infrastructure and instrumentation for prototyping
@@ -794,7 +794,7 @@
 
 /* Block signals (auto storage) */
 typedef struct {
-  real_T e__crads;                     /* '<Root>/e_~_c [rad//s]' */
+  real_T Elevationratereference;       /* '<Root>/e_~_c [rad//s]' */
   real_T TravelCounttorad;             /* '<S3>/Travel: Count to rad' */
   real_T Sum;                          /* '<S3>/Sum' */
   real_T Gain;                         /* '<S12>/Gain' */
@@ -806,10 +806,11 @@ typedef struct {
   real_T Sum2;                         /* '<S3>/Sum2' */
   real_T Gain_d;                       /* '<S8>/Gain' */
   real_T e_rad;                        /* '<Root>/e_* [rad]' */
-  real_T Sum_o;                        /* '<Root>/Sum' */
-  real_T Step;                         /* '<Root>/Step' */
+  real_T Elevationrate;                /* '<Root>/Sum' */
+  real_T Pitchreference;               /* '<Root>/Step' */
   real_T p_1rad;                       /* '<Root>/p_*1 [rad]' */
-  real_T Sum1_p;                       /* '<Root>/Sum1' */
+  real_T Pitch;                        /* '<Root>/Sum1' */
+  real_T Constant;                     /* '<S1>/Constant' */
   real_T K_ei;                         /* '<S6>/K_ei' */
   real_T FrontmotorSaturation;         /* '<S3>/Front motor: Saturation' */
   real_T BackmotorSaturation;          /* '<S3>/Back motor: Saturation' */
@@ -949,6 +950,9 @@ struct P_P2p1_T_ {
                                         */
   real_T k_pp;                         /* Variable: k_pp
                                         * Referenced by: '<S5>/K_pp'
+                                        */
+  real_T v_s_star;                     /* Variable: v_s_star
+                                        * Referenced by: '<S1>/Constant'
                                         */
   real_T HILInitialize_analog_input_maxi;/* Mask Parameter: HILInitialize_analog_input_maxi
                                           * Referenced by: '<Root>/HIL Initialize'
@@ -1232,7 +1236,7 @@ struct P_P2p1_T_ {
   real_T Step_Y0;                      /* Expression: 0
                                         * Referenced by: '<Root>/Step'
                                         */
-  real_T Step_YFinal;                  /* Expression: pi/18
+  real_T Step_YFinal;                  /* Expression: pi/9
                                         * Referenced by: '<Root>/Step'
                                         */
   real_T p_1rad_Value;                 /* Expression: 0

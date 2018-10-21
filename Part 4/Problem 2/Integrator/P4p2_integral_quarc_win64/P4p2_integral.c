@@ -3,9 +3,9 @@
  *
  * Code generation for model "P4p2_integral".
  *
- * Model version              : 1.92
+ * Model version              : 1.93
  * Simulink Coder version : 8.6 (R2014a) 27-Dec-2013
- * C source code generated on : Sat Oct 20 02:15:45 2018
+ * C source code generated on : Sun Oct 21 19:45:28 2018
  *
  * Target selection: quarc_win64.tlc
  * Note: GRT includes extra infrastructure and instrumentation for prototyping
@@ -315,7 +315,7 @@ void P4p2_integral_output0(void)       /* Sample time: [0.0s, 0.0s] */
             u[12] = rtb_TmpSignalConversionAtToFile[11];
             if (fwrite(u, sizeof(real_T), 13, fp) != 13) {
               rtmSetErrorStatus(P4p2_integral_M,
-                                "Error writing to MAT-file estimators_finished_2.mat");
+                                "Error writing to MAT-file FILENAME.mat");
               return;
             }
 
@@ -324,7 +324,7 @@ void P4p2_integral_output0(void)       /* Sample time: [0.0s, 0.0s] */
                             "*** The ToFile block will stop logging data before\n"
                             "    the simulation has ended, because it has reached\n"
                             "    the maximum number of elements (100000000)\n"
-                            "    allowed in MAT-file estimators_finished_2.mat.\n");
+                            "    allowed in MAT-file FILENAME.mat.\n");
             }
           }
         }
@@ -1111,17 +1111,16 @@ void P4p2_integral_initialize(void)
 
   /* Start for ToFile: '<S5>/To File' */
   {
-    char fileName[509] = "estimators_finished_2.mat";
+    char fileName[509] = "FILENAME.mat";
     FILE *fp = (NULL);
     if ((fp = fopen(fileName, "wb")) == (NULL)) {
-      rtmSetErrorStatus(P4p2_integral_M,
-                        "Error creating .mat file estimators_finished_2.mat");
+      rtmSetErrorStatus(P4p2_integral_M, "Error creating .mat file FILENAME.mat");
       return;
     }
 
     if (rt_WriteMat4FileHeader(fp,13,0,"ans")) {
       rtmSetErrorStatus(P4p2_integral_M,
-                        "Error writing mat file header to file estimators_finished_2.mat");
+                        "Error writing mat file header to file FILENAME.mat");
       return;
     }
 
@@ -1300,28 +1299,26 @@ void P4p2_integral_terminate(void)
   {
     FILE *fp = (FILE *) P4p2_integral_DW.ToFile_PWORK.FilePtr;
     if (fp != (NULL)) {
-      char fileName[509] = "estimators_finished_2.mat";
+      char fileName[509] = "FILENAME.mat";
       if (fclose(fp) == EOF) {
-        rtmSetErrorStatus(P4p2_integral_M,
-                          "Error closing MAT-file estimators_finished_2.mat");
+        rtmSetErrorStatus(P4p2_integral_M, "Error closing MAT-file FILENAME.mat");
         return;
       }
 
       if ((fp = fopen(fileName, "r+b")) == (NULL)) {
         rtmSetErrorStatus(P4p2_integral_M,
-                          "Error reopening MAT-file estimators_finished_2.mat");
+                          "Error reopening MAT-file FILENAME.mat");
         return;
       }
 
       if (rt_WriteMat4FileHeader(fp, 13, P4p2_integral_DW.ToFile_IWORK.Count,
            "ans")) {
         rtmSetErrorStatus(P4p2_integral_M,
-                          "Error writing header for ans to MAT-file estimators_finished_2.mat");
+                          "Error writing header for ans to MAT-file FILENAME.mat");
       }
 
       if (fclose(fp) == EOF) {
-        rtmSetErrorStatus(P4p2_integral_M,
-                          "Error closing MAT-file estimators_finished_2.mat");
+        rtmSetErrorStatus(P4p2_integral_M, "Error closing MAT-file FILENAME.mat");
         return;
       }
 
@@ -1479,10 +1476,10 @@ RT_MODEL_P4p2_integral_T *P4p2_integral(void)
   P4p2_integral_M->Timing.stepSize2 = 0.01;
 
   /* External mode info */
-  P4p2_integral_M->Sizes.checksums[0] = (2734372292U);
-  P4p2_integral_M->Sizes.checksums[1] = (2863029871U);
-  P4p2_integral_M->Sizes.checksums[2] = (3041814475U);
-  P4p2_integral_M->Sizes.checksums[3] = (2275479556U);
+  P4p2_integral_M->Sizes.checksums[0] = (3973106948U);
+  P4p2_integral_M->Sizes.checksums[1] = (1787320641U);
+  P4p2_integral_M->Sizes.checksums[2] = (3741561941U);
+  P4p2_integral_M->Sizes.checksums[3] = (4161885918U);
 
   {
     static const sysRanDType rtAlwaysEnabled = SUBSYS_RAN_BC_ENABLE;

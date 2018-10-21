@@ -344,8 +344,8 @@
       paramMap.sections(4) = section;
       clear section
       
-      section.nData     = 40;
-      section.data(40)  = dumData; %prealloc
+      section.nData     = 41;
+      section.data(41)  = dumData; %prealloc
       
 	  ;% P3p3_P.RateTransitionx_X0
 	  section.data(1).logicalSrcIdx = 72;
@@ -483,29 +483,33 @@
 	  section.data(34).logicalSrcIdx = 105;
 	  section.data(34).dtTransOffset = 33;
 	
-	  ;% P3p3_P.Backgain_Gain
+	  ;% P3p3_P.v_s__Value
 	  section.data(35).logicalSrcIdx = 106;
 	  section.data(35).dtTransOffset = 34;
 	
-	  ;% P3p3_P.Frontgain_Gain
+	  ;% P3p3_P.Backgain_Gain
 	  section.data(36).logicalSrcIdx = 107;
 	  section.data(36).dtTransOffset = 35;
 	
-	  ;% P3p3_P.FrontmotorSaturation_UpperSat
+	  ;% P3p3_P.Frontgain_Gain
 	  section.data(37).logicalSrcIdx = 108;
 	  section.data(37).dtTransOffset = 36;
 	
-	  ;% P3p3_P.FrontmotorSaturation_LowerSat
+	  ;% P3p3_P.FrontmotorSaturation_UpperSat
 	  section.data(38).logicalSrcIdx = 109;
 	  section.data(38).dtTransOffset = 37;
 	
-	  ;% P3p3_P.BackmotorSaturation_UpperSat
+	  ;% P3p3_P.FrontmotorSaturation_LowerSat
 	  section.data(39).logicalSrcIdx = 110;
 	  section.data(39).dtTransOffset = 38;
 	
-	  ;% P3p3_P.BackmotorSaturation_LowerSat
+	  ;% P3p3_P.BackmotorSaturation_UpperSat
 	  section.data(40).logicalSrcIdx = 111;
 	  section.data(40).dtTransOffset = 39;
+	
+	  ;% P3p3_P.BackmotorSaturation_LowerSat
+	  section.data(41).logicalSrcIdx = 112;
+	  section.data(41).dtTransOffset = 40;
 	
       nTotData = nTotData + section.nData;
       paramMap.sections(5) = section;
@@ -515,7 +519,7 @@
       section.data(1)  = dumData; %prealloc
       
 	  ;% P3p3_P.GameController_BufferSize
-	  section.data(1).logicalSrcIdx = 112;
+	  section.data(1).logicalSrcIdx = 113;
 	  section.data(1).dtTransOffset = 0;
 	
       nTotData = nTotData + section.nData;
@@ -526,7 +530,7 @@
       section.data(1)  = dumData; %prealloc
       
 	  ;% P3p3_P.GameController_ControllerNumber
-	  section.data(1).logicalSrcIdx = 113;
+	  section.data(1).logicalSrcIdx = 114;
 	  section.data(1).dtTransOffset = 0;
 	
       nTotData = nTotData + section.nData;
@@ -537,19 +541,19 @@
       section.data(4)  = dumData; %prealloc
       
 	  ;% P3p3_P.HILReadEncoderTimebase_Active
-	  section.data(1).logicalSrcIdx = 114;
+	  section.data(1).logicalSrcIdx = 115;
 	  section.data(1).dtTransOffset = 0;
 	
 	  ;% P3p3_P.HILWriteAnalog_Active
-	  section.data(2).logicalSrcIdx = 115;
+	  section.data(2).logicalSrcIdx = 116;
 	  section.data(2).dtTransOffset = 1;
 	
 	  ;% P3p3_P.GameController_AutoCenter
-	  section.data(3).logicalSrcIdx = 116;
+	  section.data(3).logicalSrcIdx = 117;
 	  section.data(3).dtTransOffset = 2;
 	
 	  ;% P3p3_P.GameController_Enabled
-	  section.data(4).logicalSrcIdx = 117;
+	  section.data(4).logicalSrcIdx = 118;
 	  section.data(4).dtTransOffset = 3;
 	
       nTotData = nTotData + section.nData;
@@ -597,8 +601,8 @@
     ;%
     ;% Auto data (P3p3_B)
     ;%
-      section.nData     = 23;
-      section.data(23)  = dumData; %prealloc
+      section.nData     = 24;
+      section.data(24)  = dumData; %prealloc
       
 	  ;% P3p3_B.RateTransitionx
 	  section.data(1).logicalSrcIdx = 0;
@@ -668,29 +672,33 @@
 	  section.data(17).logicalSrcIdx = 16;
 	  section.data(17).dtTransOffset = 18;
 	
-	  ;% P3p3_B.FrontmotorSaturation
+	  ;% P3p3_B.v_s_
 	  section.data(18).logicalSrcIdx = 17;
 	  section.data(18).dtTransOffset = 20;
 	
-	  ;% P3p3_B.BackmotorSaturation
+	  ;% P3p3_B.FrontmotorSaturation
 	  section.data(19).logicalSrcIdx = 18;
 	  section.data(19).dtTransOffset = 21;
 	
-	  ;% P3p3_B.GameController_o4
+	  ;% P3p3_B.BackmotorSaturation
 	  section.data(20).logicalSrcIdx = 19;
 	  section.data(20).dtTransOffset = 22;
 	
-	  ;% P3p3_B.GameController_o5
+	  ;% P3p3_B.GameController_o4
 	  section.data(21).logicalSrcIdx = 20;
 	  section.data(21).dtTransOffset = 23;
 	
-	  ;% P3p3_B.Sum1_l
+	  ;% P3p3_B.GameController_o5
 	  section.data(22).logicalSrcIdx = 21;
 	  section.data(22).dtTransOffset = 24;
 	
-	  ;% P3p3_B.Sum2_o
+	  ;% P3p3_B.Sum1_l
 	  section.data(23).logicalSrcIdx = 22;
 	  section.data(23).dtTransOffset = 25;
+	
+	  ;% P3p3_B.Sum2_o
+	  section.data(24).logicalSrcIdx = 23;
+	  section.data(24).dtTransOffset = 26;
 	
       nTotData = nTotData + section.nData;
       sigMap.sections(1) = section;
@@ -940,8 +948,8 @@
   ;%
 
 
-  targMap.checksum0 = 1285318926;
-  targMap.checksum1 = 1465956639;
-  targMap.checksum2 = 2195481403;
-  targMap.checksum3 = 2194583973;
+  targMap.checksum0 = 1248258;
+  targMap.checksum1 = 1291459350;
+  targMap.checksum2 = 3326849272;
+  targMap.checksum3 = 2646164146;
 

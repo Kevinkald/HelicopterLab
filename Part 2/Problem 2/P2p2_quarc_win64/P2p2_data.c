@@ -5,7 +5,7 @@
  *
  * Model version              : 1.69
  * Simulink Coder version : 8.6 (R2014a) 27-Dec-2013
- * C source code generated on : Sat Oct 20 02:20:10 2018
+ * C source code generated on : Sun Oct 21 19:26:21 2018
  *
  * Target selection: quarc_win64.tlc
  * Note: GRT includes extra infrastructure and instrumentation for prototyping
@@ -32,6 +32,9 @@ P_P2p2_T P2p2_P = {
                                         */
   -1.0,                                /* Variable: k_rp
                                         * Referenced by: '<S6>/k_rp'
+                                        */
+  6.5,                                 /* Variable: v_s_star
+                                        * Referenced by: '<S1>/Constant'
                                         */
   10.0,                                /* Mask Parameter: HILInitialize_analog_input_maxi
                                         * Referenced by: '<Root>/HIL Initialize'

@@ -3,9 +3,9 @@
  *
  * Code generation for model "P2p1".
  *
- * Model version              : 1.69
+ * Model version              : 1.73
  * Simulink Coder version : 8.6 (R2014a) 27-Dec-2013
- * C source code generated on : Sat Oct 20 02:18:56 2018
+ * C source code generated on : Sun Oct 21 19:24:03 2018
  *
  * Target selection: quarc_win64.tlc
  * Note: GRT includes extra infrastructure and instrumentation for prototyping
@@ -29,6 +29,9 @@ P_P2p1_T P2p1_P = {
                                         */
   9.0845222328208859,                  /* Variable: k_pp
                                         * Referenced by: '<S5>/K_pp'
+                                        */
+  6.5,                                 /* Variable: v_s_star
+                                        * Referenced by: '<S1>/Constant'
                                         */
   10.0,                                /* Mask Parameter: HILInitialize_analog_input_maxi
                                         * Referenced by: '<Root>/HIL Initialize'
@@ -326,7 +329,7 @@ P_P2p1_T P2p1_P = {
   0.0,                                 /* Expression: 0
                                         * Referenced by: '<Root>/Step'
                                         */
-  0.17453292519943295,                 /* Expression: pi/18
+  0.3490658503988659,                  /* Expression: pi/9
                                         * Referenced by: '<Root>/Step'
                                         */
   0.0,                                 /* Expression: 0

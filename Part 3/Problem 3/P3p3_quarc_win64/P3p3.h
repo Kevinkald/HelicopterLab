@@ -3,9 +3,9 @@
  *
  * Code generation for model "P3p3".
  *
- * Model version              : 1.88
+ * Model version              : 1.90
  * Simulink Coder version : 8.6 (R2014a) 27-Dec-2013
- * C source code generated on : Fri Oct 19 23:22:47 2018
+ * C source code generated on : Sun Oct 21 19:37:04 2018
  *
  * Target selection: quarc_win64.tlc
  * Note: GRT includes extra infrastructure and instrumentation for prototyping
@@ -810,6 +810,7 @@ typedef struct {
   real_T Joystick_gain_y;              /* '<S4>/Joystick_gain_y' */
   real_T Elevationrate[2];             /* '<S2>/Elevation rate' */
   real_T Referencefeedforward[2];      /* '<S5>/Reference feed forward ' */
+  real_T v_s_;                         /* '<S1>/v_s_+' */
   real_T FrontmotorSaturation;         /* '<S3>/Front motor: Saturation' */
   real_T BackmotorSaturation;          /* '<S3>/Back motor: Saturation' */
   real_T GameController_o4;            /* '<S4>/Game Controller' */
@@ -1251,6 +1252,9 @@ struct P_P3p3_T_ {
                                         */
   real_T Integrator_IC;                /* Expression: 0
                                         * Referenced by: '<S5>/Integrator'
+                                        */
+  real_T v_s__Value;                   /* Expression: 0
+                                        * Referenced by: '<S1>/v_s_+'
                                         */
   real_T Backgain_Gain;                /* Expression: 0.5
                                         * Referenced by: '<S1>/Back gain'

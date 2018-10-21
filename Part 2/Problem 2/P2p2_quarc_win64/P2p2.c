@@ -5,7 +5,7 @@
  *
  * Model version              : 1.69
  * Simulink Coder version : 8.6 (R2014a) 27-Dec-2013
- * C source code generated on : Sat Oct 20 02:20:10 2018
+ * C source code generated on : Sun Oct 21 19:26:21 2018
  *
  * Target selection: quarc_win64.tlc
  * Note: GRT includes extra infrastructure and instrumentation for prototyping
@@ -284,13 +284,18 @@ void P2p2_output0(void)                /* Sample time: [0.0s, 0.0s] */
    *  Sum: '<Root>/Sum'
    */
   rtb_Sum_p = P2p2_B.e__crads - (P2p2_B.Degtorad[4] - P2p2_B.e_rad);
+  if (rtmIsMajorTimeStep(P2p2_M)) {
+    /* Constant: '<S1>/Constant' */
+    P2p2_B.Constant = P2p2_P.v_s_star;
+  }
 
-  /* Sum: '<S7>/Sum' incorporates:
+  /* Sum: '<S1>/Sum' incorporates:
    *  Gain: '<S7>/K_ed'
    *  Gain: '<S7>/K_ep'
+   *  Sum: '<S7>/Sum'
    */
-  rtb_Backgain = (P2p2_P.K_ep_Gain * rtb_Sum_p + rtb_Backgain) -
-    P2p2_P.K_ed_Gain * P2p2_B.Degtorad[5];
+  rtb_Backgain = ((P2p2_P.K_ep_Gain * rtb_Sum_p + rtb_Backgain) -
+                  P2p2_P.K_ed_Gain * P2p2_B.Degtorad[5]) + P2p2_B.Constant;
 
   /* Sum: '<S1>/Add' */
   rtb_Add = rtb_Frontgain + rtb_Backgain;
@@ -1200,10 +1205,10 @@ RT_MODEL_P2p2_T *P2p2(void)
   P2p2_M->Timing.stepSize2 = 0.01;
 
   /* External mode info */
-  P2p2_M->Sizes.checksums[0] = (3478628995U);
-  P2p2_M->Sizes.checksums[1] = (3686278093U);
-  P2p2_M->Sizes.checksums[2] = (1515850253U);
-  P2p2_M->Sizes.checksums[3] = (3053067714U);
+  P2p2_M->Sizes.checksums[0] = (3815237664U);
+  P2p2_M->Sizes.checksums[1] = (3621297569U);
+  P2p2_M->Sizes.checksums[2] = (553248953U);
+  P2p2_M->Sizes.checksums[3] = (1864688784U);
 
   {
     static const sysRanDType rtAlwaysEnabled = SUBSYS_RAN_BC_ENABLE;
@@ -1247,6 +1252,7 @@ RT_MODEL_P2p2_T *P2p2(void)
     P2p2_B.p_rad = 0.0;
     P2p2_B.e_rad = 0.0;
     P2p2_B.e__crads = 0.0;
+    P2p2_B.Constant = 0.0;
     P2p2_B.K_ei = 0.0;
     P2p2_B.FrontmotorSaturation = 0.0;
     P2p2_B.BackmotorSaturation = 0.0;
@@ -1356,9 +1362,9 @@ RT_MODEL_P2p2_T *P2p2(void)
   P2p2_M->Sizes.numU = (0);            /* Number of model inputs */
   P2p2_M->Sizes.sysDirFeedThru = (0);  /* The model is not direct feedthrough */
   P2p2_M->Sizes.numSampTimes = (3);    /* Number of sample times */
-  P2p2_M->Sizes.numBlocks = (63);      /* Number of blocks */
-  P2p2_M->Sizes.numBlockIO = (23);     /* Number of block outputs */
-  P2p2_M->Sizes.numBlockPrms = (157);  /* Sum of parameter "widths" */
+  P2p2_M->Sizes.numBlocks = (65);      /* Number of blocks */
+  P2p2_M->Sizes.numBlockIO = (24);     /* Number of block outputs */
+  P2p2_M->Sizes.numBlockPrms = (158);  /* Sum of parameter "widths" */
   return P2p2_M;
 }
 

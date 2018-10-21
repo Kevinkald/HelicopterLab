@@ -37,18 +37,12 @@ k3 = (-k_f*l_h*g*(m_c*l_c - 2*m_p*l_h))/(j_lambda*k_f*l_h);
 
 %%%%%%%%%% Transer functions
 s = tf('s');
-omega0 = 3*pi/4;
-zeta = 1.0;
-k_pp = (omega0^2)/k1;
-k_pd = (2*zeta * omega0)/k1;
-%k_pp =10;
-%k_pd = 2*k_pp/(sqrt(k1*k_pp));
+omega0 = 5;
+zeta = 0.9;
+%kpp = (omega0^2)/k1;
+%kpd = (2*zeta * omega0)/k1;
+kpp = 5;
+kpd = 2*kpp/(sqrt(k1*kpp));
+k_pp =kpp;
+k_pd = kpd;
 pitchControler = (k1*k_pp)/(s^2+k1*k_pd*s+k1*k_pp);
-
-%margin(1/(1+pitchControler));
-eig(pitchControler)
-
-%%%%%%%%%%%%%%Problem 2
-
-k_rp = 1;
-
