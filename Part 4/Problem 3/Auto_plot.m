@@ -26,21 +26,23 @@ figure;
 subplot(3,2,1);
 hold on;
 xlim([0 10]);
+ylim([-150 230]);
 plot(time, pitch_mes, 'r');
 plot(time, pitch_est, '--b');
 legend('Measured pitch','Estimated pitch');
 xlabel('Time t [s]');
-ylabel('Pitch [ï¿½]');
+ylabel('Pitch [°]');
 
 %%Pitch rate
 subplot(3,2,2);
 hold on;
 xlim([0 10]);
+ylim([-300 300]);
 plot(time, pitch_rate_mes, 'r');
-plot(time, pitch_rate_est, '--b');
+plot(time, pitch_rate_est, 'b');
 legend('Measured pitch rate','Estimated pitch rate');
 xlabel('Time t [s]');
-ylabel('Pitch rate [ï¿½/s]');
+ylabel('Pitch rate [°/s]');
 
 %%Elevation
 subplot(3,2,3);
@@ -50,17 +52,17 @@ plot(time, elevation_mes, 'r');
 plot(time, elevation_est, '--b');
 legend('Measured elevation','Estimated elevation');
 xlabel('Time t [s]');
-ylabel('Elevation [ï¿½]');
+ylabel('Elevation [°]');
 
 %%Elevation rate
 subplot(3,2,4);
 hold on;
 xlim([0 10]);
 plot(time, elevation_rate_mes, 'r');
-plot(time, elevation_rate_est, '--b');
+plot(time, elevation_rate_est, 'b');
 legend('Measured elevation rate','Estimated elevation rate');
 xlabel('Time t [s]');
-ylabel('Elevation rate [ï¿½/s]');
+ylabel('Elevation rate [°/s]');
 
 %%Travel
 subplot(3,2,5);
@@ -70,14 +72,14 @@ plot(time, travel_mes, 'r');
 plot(time, travel_est, '--b');
 legend('Measured travel','Estimated travel');
 xlabel('Time t [s]');
-ylabel('Travel [ï¿½]');
+ylabel('Travel [°]');
 
 %%Travel rate
 subplot(3,2,6);
 hold on;
 xlim([0 10]);
 plot(time, travel_rate_mes, 'r');
-plot(time, travel_rate_est, '--b');
+plot(time, travel_rate_est, 'b');
 legend('Measured travel rate','Estimated travel rate');
 xlabel('Time t [s]');
-ylabel('Travel rate [ï¿½/s]');
+ylabel('Travel rate [°/s]');

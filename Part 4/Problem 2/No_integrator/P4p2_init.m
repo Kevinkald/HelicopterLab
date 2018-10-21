@@ -129,7 +129,7 @@ xlabel('Re');
 ylabel('Im');
 grid on;
 axis([-25,25,-25,25])
-close;
+%close;
 
 L = place(A_e',C_e',poles)';
 

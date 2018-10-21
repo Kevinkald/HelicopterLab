@@ -116,6 +116,16 @@ end
 plot(real(poles),imag(poles),'r*');
 hold on;
 
+%%%Ploting sector lines
+x1 = [0 real(poles(4))]
+y1 = [0 imag(poles(4))]
+pl = line(x1,y1);
+
+x2 = [0 real(poles(1))]
+y2 = [0 imag(poles(1))]
+p2 = line(x2,y2);
+
+
 
 %%Plot circle
 n = 256;
@@ -134,6 +144,9 @@ xlabel('Re');
 ylabel('Im');
 grid on;
 axis([-omegac-5,omegac+5,-omegac-5,omegac+5])
+
+
+
 L = place(A_e',C_e',poles)';
     
 A_est = A_e-L*C_e;
